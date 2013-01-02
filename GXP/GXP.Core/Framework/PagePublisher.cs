@@ -39,7 +39,9 @@ namespace GXP.Core.Framework
 
         private string DoTransformation(string xslt_)
         {
-            throw new NotImplementedException("DoTransformation");
+            CMSXsltUtility cmsXsltUtility = new CMSXsltUtility();
+            cmsXsltUtility.PublishingDetail = this._input;
+            return cmsXsltUtility.PerformTransformation(xslt_, "<root/>", true);
         }
 
         private string PrepareXSLT()

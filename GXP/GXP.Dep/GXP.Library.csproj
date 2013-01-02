@@ -40,11 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services\ASPNetCachingService.cs" />
-    <Compile Include="Services\FileLoggingService.cs" />
+    <Compile Include="ModuleParser\ExcelModuleParser.cs" />
+    <Compile Include="ModuleParser\FileModuleParser.cs" />
+    <Compile Include="ModuleParser\HTMLModuleParser.cs" />
+    <Compile Include="ModuleParser\RSSModuleParser.cs" />
+    <Compile Include="ModuleParser\SQLModuleParser.cs" />
+    <Compile Include="Service\ASPNetCachingService.cs" />
+    <Compile Include="Service\FileLoggingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\SQLHelper.cs" />
-    <Compile Include="Validations\IsValidExtension.cs" />
+    <Compile Include="Service\SQLHelper.cs" />
+    <Compile Include="Validation\IsValidExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GXP.Core\GXP.Core.csproj">
