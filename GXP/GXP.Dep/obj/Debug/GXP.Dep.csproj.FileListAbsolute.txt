@@ -1,0 +1,5 @@
+C:\mygit\GXP\GXP\GXP.Dep\bin\Debug\GXP.Dep.dll
+C:\mygit\GXP\GXP\GXP.Dep\bin\Debug\GXP.Dep.pdb
+C:\mygit\GXP\GXP\GXP.Dep\obj\Debug\ResolveAssemblyReference.cache
+C:\mygit\GXP\GXP\GXP.Dep\obj\Debug\GXP.Dep.dll
+C:\mygit\GXP\GXP\GXP.Dep\obj\Debug\GXP.Dep.pdb
