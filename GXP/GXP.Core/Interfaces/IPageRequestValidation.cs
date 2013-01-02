@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GXP.Core.Interfaces
 {
-    public interface ILoggingService
+    public interface IPageRequestValidation
     {
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GXP.Core.Interfaces
 {
-    interface ICachingService
+    public interface ICachingService
     {
     }
 }

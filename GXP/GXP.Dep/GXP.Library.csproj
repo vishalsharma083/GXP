@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{232635A6-E19B-4480-9DC1-79DA2CBC2CFA}</ProjectGuid>
+    <ProjectGuid>{C9676DD0-40C4-46E6-9FCF-CA1AAEACBA31}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GXP.Core</RootNamespace>
-    <AssemblyName>GXP.Core</AssemblyName>
+    <RootNamespace>GXP.Dep</RootNamespace>
+    <AssemblyName>GXP.Dep</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -33,7 +33,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,26 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Framework\DependencyManager.cs" />
-    <Compile Include="Framework\PagePublisher.cs" />
-    <Compile Include="Framework\PagePublisherInput.cs" />
-    <Compile Include="Framework\PageRequestValidationResult.cs" />
-    <Compile Include="GCMSEntities\ExcelPublisherInfo.cs" />
-    <Compile Include="GCMSEntities\CMSFileInfo.cs" />
-    <Compile Include="GCMSEntities\SQLModuleInfo.cs" />
-    <Compile Include="GCMSEntities\CMSTextInfo.cs" />
-    <Compile Include="GCMSEntities\WeatherInfo.cs" />
-    <Compile Include="GCMSEntities\RSSInfo.cs" />
-    <Compile Include="GCMSEntities\UserReviewListingInfo.cs" />
-    <Compile Include="Interfaces\ICachingService.cs" />
-    <Compile Include="Interfaces\ICMSContentRepository.cs" />
-    <Compile Include="Interfaces\IDBService.cs" />
-    <Compile Include="Interfaces\ILoggingService.cs" />
-    <Compile Include="Interfaces\IPageRequestValidation.cs" />
+    <Compile Include="Services\ASPNetCachingService.cs" />
+    <Compile Include="Services\FileLoggingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utility\Utility.cs" />
+    <Compile Include="Services\SQLHelper.cs" />
+    <Compile Include="Validations\IsValidExtension.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\GXP.Core\GXP.Core.csproj">
+      <Project>{232635A6-E19B-4480-9DC1-79DA2CBC2CFA}</Project>
+      <Name>GXP.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

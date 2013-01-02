@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using GXP.Core.Interfaces;
 
-namespace GXP.Core.Interfaces
+namespace GXP.Dep
 {
-    public interface ILoggingService
+    public class SQLHelper : IDBService
     {
     }
 }

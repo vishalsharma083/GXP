@@ -143,9 +143,9 @@
       <Project>{232635A6-E19B-4480-9DC1-79DA2CBC2CFA}</Project>
       <Name>GXP.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GXP.Dep\GXP.Dep.csproj">
+    <ProjectReference Include="..\GXP.Dep\GXP.Library.csproj">
       <Project>{C9676DD0-40C4-46E6-9FCF-CA1AAEACBA31}</Project>
-      <Name>GXP.Dep</Name>
+      <Name>GXP.Library</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

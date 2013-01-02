@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GXP.Core.Interfaces
 {
-    interface IDBService
+    public interface IDBService
     {
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GXP.Core.Interfaces
 {
-    interface ICMSContentRepository
+    public interface ICMSContentRepository
     {
     }
 }

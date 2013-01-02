@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GXP.Core.Interfaces
+namespace GXP.Core.Framework
 {
-    public interface ILoggingService
+    public class PageRequestValidationResult
     {
     }
 }
