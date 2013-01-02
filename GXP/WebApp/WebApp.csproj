@@ -143,7 +143,7 @@
       <Project>{232635A6-E19B-4480-9DC1-79DA2CBC2CFA}</Project>
       <Name>GXP.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GXP.Dep\GXP.Library.csproj">
+    <ProjectReference Include="..\GXP.Library\GXP.Library.csproj">
       <Project>{C9676DD0-40C4-46E6-9FCF-CA1AAEACBA31}</Project>
       <Name>GXP.Library</Name>
     </ProjectReference>
