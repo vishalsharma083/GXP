@@ -1,9 +1,0 @@
-C:\mygit\GXP\GXP\WebApp\bin\WebApp.dll
-C:\mygit\GXP\GXP\WebApp\bin\WebApp.pdb
-C:\mygit\GXP\GXP\WebApp\obj\Debug\ResolveAssemblyReference.cache
-C:\mygit\GXP\GXP\WebApp\obj\Debug\WebApp.dll
-C:\mygit\GXP\GXP\WebApp\obj\Debug\WebApp.pdb
-C:\mygit\GXP\GXP\WebApp\bin\GXP.Core.dll
-C:\mygit\GXP\GXP\WebApp\bin\GXP.Dep.dll
-C:\mygit\GXP\GXP\WebApp\bin\GXP.Core.pdb
-C:\mygit\GXP\GXP\WebApp\bin\GXP.Dep.pdb
