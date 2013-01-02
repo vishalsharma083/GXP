@@ -5,8 +5,9 @@ using System.Text;
 
 namespace GXP.Core.Framework
 {
-    public class PageRequestValidationResult
+    public class PagePublisherResult
     {
-        public bool IsValid { get; set; }
+        public string Response { get; set; }
+        public PublishStatus Status { get; set; }
     }
 }

@@ -5,8 +5,10 @@ using System.Text;
 
 namespace GXP.Core.Framework
 {
-    public class PageRequestValidationResult
-    {
-        public bool IsValid { get; set; }
+    public enum PublishStatus
+    { 
+        NONE,
+        FAILED,
+        SUCCESS
     }
 }

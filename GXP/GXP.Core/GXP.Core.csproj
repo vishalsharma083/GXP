@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Framework\DependencyManager.cs" />
+    <Compile Include="Framework\GXPEnums.cs" />
     <Compile Include="Framework\PagePublisher.cs" />
     <Compile Include="Framework\PagePublisherInput.cs" />
+    <Compile Include="Framework\PagePublisherResult.cs" />
     <Compile Include="Framework\PageRequestValidationResult.cs" />
     <Compile Include="GCMSEntities\ExcelPublisherInfo.cs" />
     <Compile Include="GCMSEntities\CMSFileInfo.cs" />
