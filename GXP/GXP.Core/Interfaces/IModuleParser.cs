@@ -7,8 +7,7 @@ namespace GXP.Core.Interfaces
 {
     public interface IModuleParser
     {
-        string ModuleXml { get; set; }
-        bool CanParse();
-        string GenerateContent();
+        bool CanParse(string moduleXml_);
+        string GenerateContent(string moduleXml_);
     }
 }

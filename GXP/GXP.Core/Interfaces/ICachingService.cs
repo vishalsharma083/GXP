@@ -7,5 +7,7 @@ namespace GXP.Core.Interfaces
 {
     public interface ICachingService
     {
+        object Get(string cacheKey_);
+        void Insert(string cacheKey_, object o_, DateTime duration_);
     }
 }

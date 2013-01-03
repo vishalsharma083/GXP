@@ -33,6 +33,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,9 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DNNEntities\DNNEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DNNEntities.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Framework\CMSXsltUtility.cs" />
     <Compile Include="Framework\DependencyManager.cs" />
     <Compile Include="Framework\GXPEnums.cs" />
+    <Compile Include="Framework\ModuleParsingManager.cs" />
     <Compile Include="Framework\PagePublisher.cs" />
     <Compile Include="Framework\PagePublisherInput.cs" />
     <Compile Include="Framework\PagePublisherResult.cs" />
@@ -65,6 +74,15 @@
     <Compile Include="Utility\Utility.cs" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <EntityDeploy Include="DNNEntities\DNNEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DNNEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

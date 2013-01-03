@@ -8,24 +8,13 @@ namespace GXP.Dep.ModuleParsers
 {
     public class HTMLModuleParser : IModuleParser
     {
-        public string ModuleXml
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
 
-        public bool CanParse()
+        public bool CanParse(string moduleXml_)
         {
             throw new NotImplementedException();
         }
 
-        public string GenerateContent()
+        public string GenerateContent(string moduleXml_)
         {
             throw new NotImplementedException();
         }

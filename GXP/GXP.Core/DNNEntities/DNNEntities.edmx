@@ -1,0 +1,1575 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DNNModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="DNNModelStoreContainer">
+          <EntitySet Name="DesktopModulePermission" EntityType="DNNModel.Store.DesktopModulePermission" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DesktopModules" EntityType="DNNModel.Store.DesktopModules" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ModuleControls" EntityType="DNNModel.Store.ModuleControls" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ModuleDefinitions" EntityType="DNNModel.Store.ModuleDefinitions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ModulePermission" EntityType="DNNModel.Store.ModulePermission" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Modules" EntityType="DNNModel.Store.Modules" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ModuleSettings" EntityType="DNNModel.Store.ModuleSettings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PortalAlias" EntityType="DNNModel.Store.PortalAlias" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Portals" EntityType="DNNModel.Store.Portals" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PortalSettings" EntityType="DNNModel.Store.PortalSettings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TabModules" EntityType="DNNModel.Store.TabModules" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TabModuleSettings" EntityType="DNNModel.Store.TabModuleSettings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TabPermission" EntityType="DNNModel.Store.TabPermission" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tabs" EntityType="DNNModel.Store.Tabs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TabSettings" EntityType="DNNModel.Store.TabSettings" store:Type="Tables" store:Schema="dbo" store:Name="TabSettings">
+            <DefiningQuery>SELECT 
+      [TabSettings].[TabID] AS [TabID], 
+      [TabSettings].[SettingName] AS [SettingName], 
+      [TabSettings].[SettingValue] AS [SettingValue], 
+      [TabSettings].[CreatedByUserID] AS [CreatedByUserID], 
+      [TabSettings].[CreatedOnDate] AS [CreatedOnDate], 
+      [TabSettings].[LastModifiedByUserID] AS [LastModifiedByUserID], 
+      [TabSettings].[LastModifiedOnDate] AS [LastModifiedOnDate]
+      FROM [dbo].[TabSettings] AS [TabSettings]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_ModuleControls_ModuleDefinitions" Association="DNNModel.Store.FK_ModuleControls_ModuleDefinitions">
+            <End Role="ModuleDefinitions" EntitySet="ModuleDefinitions" />
+            <End Role="ModuleControls" EntitySet="ModuleControls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModuleDefinitions_DesktopModules" Association="DNNModel.Store.FK_ModuleDefinitions_DesktopModules">
+            <End Role="DesktopModules" EntitySet="DesktopModules" />
+            <End Role="ModuleDefinitions" EntitySet="ModuleDefinitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModulePermission_Modules" Association="DNNModel.Store.FK_ModulePermission_Modules">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="ModulePermission" EntitySet="ModulePermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modules_ModuleDefinitions" Association="DNNModel.Store.FK_Modules_ModuleDefinitions">
+            <End Role="ModuleDefinitions" EntitySet="ModuleDefinitions" />
+            <End Role="Modules" EntitySet="Modules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modules_Portals" Association="DNNModel.Store.FK_Modules_Portals">
+            <End Role="Portals" EntitySet="Portals" />
+            <End Role="Modules" EntitySet="Modules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModuleSettings_Modules" Association="DNNModel.Store.FK_ModuleSettings_Modules">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="ModuleSettings" EntitySet="ModuleSettings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PortalAlias_Portals" Association="DNNModel.Store.FK_PortalAlias_Portals">
+            <End Role="Portals" EntitySet="Portals" />
+            <End Role="PortalAlias" EntitySet="PortalAlias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PortalSettings_Portals" Association="DNNModel.Store.FK_PortalSettings_Portals">
+            <End Role="Portals" EntitySet="Portals" />
+            <End Role="PortalSettings" EntitySet="PortalSettings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TabModules_Modules" Association="DNNModel.Store.FK_TabModules_Modules">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="TabModules" EntitySet="TabModules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TabModules_Tabs" Association="DNNModel.Store.FK_TabModules_Tabs">
+            <End Role="Tabs" EntitySet="Tabs" />
+            <End Role="TabModules" EntitySet="TabModules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TabModuleSettings_TabModules" Association="DNNModel.Store.FK_TabModuleSettings_TabModules">
+            <End Role="TabModules" EntitySet="TabModules" />
+            <End Role="TabModuleSettings" EntitySet="TabModuleSettings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TabPermission_Tabs" Association="DNNModel.Store.FK_TabPermission_Tabs">
+            <End Role="Tabs" EntitySet="Tabs" />
+            <End Role="TabPermission" EntitySet="TabPermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tabs_Portals" Association="DNNModel.Store.FK_Tabs_Portals">
+            <End Role="Portals" EntitySet="Portals" />
+            <End Role="Tabs" EntitySet="Tabs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tabs_Tabs" Association="DNNModel.Store.FK_Tabs_Tabs">
+            <End Role="Tabs" EntitySet="Tabs" />
+            <End Role="Tabs1" EntitySet="Tabs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TabSettings_Tabs" Association="DNNModel.Store.FK_TabSettings_Tabs">
+            <End Role="Tabs" EntitySet="Tabs" />
+            <End Role="TabSettings" EntitySet="TabSettings" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="DesktopModulePermission">
+          <Key>
+            <PropertyRef Name="DesktopModulePermissionID" />
+          </Key>
+          <Property Name="DesktopModulePermissionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PortalDesktopModuleID" Type="int" Nullable="false" />
+          <Property Name="PermissionID" Type="int" Nullable="false" />
+          <Property Name="AllowAccess" Type="bit" Nullable="false" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="CreatedByUserID" Type="int" />
+          <Property Name="CreatedOnDate" Type="datetime" />
+          <Property Name="LastModifiedByUserID" Type="int" />
+          <Property Name="LastModifiedOnDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DesktopModules">
+          <Key>
+            <PropertyRef Name="DesktopModuleID" />
+          </Key>
+          <Property Name="DesktopModuleID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FriendlyName" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Version" Type="nvarchar" MaxLength="8" />
+          <Property Name="IsPremium" Type="bit" Nullable="false" />
+          <Property Name="IsAdmin" Type="bit" Nullable="false" />
+          <Property Name="BusinessControllerClass" Type="nvarchar" MaxLength="200" />
+          <Property Name="FolderName" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="ModuleName" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="SupportedFeatures" Type="int" Nullable="false" />
+          <Property Name="CompatibleVersions" Type="nvarchar" MaxLength="500" />
+          <Property Name="Dependencies" Type="nvarchar" MaxLength="400" />
+          <Property Name="Permissions" Type="nvarchar" MaxLength="400" />
+          <Property Name="PackageID" Type="int" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="int" />
+          <Property Name="CreatedOnDate" Type="datetime" />
+          <Property Name="LastModifiedByUserID" Type="int" />
+          <Property Name="LastModifiedOnDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ModuleControls">
+          <Key>
+            <PropertyRef Name="ModuleControlID" />
+          </Key>
+          <Property Name="ModuleControlID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ModuleDefID" Type="int" />
+          <Property Name="ControlKey" Type="nvarchar" MaxLength="50" />
+          <Property Name="ControlTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="ControlSrc" Type="nvarchar" MaxLength="256" />
+          <Property Name="IconFile" Type="nvarchar" MaxLength="100" />
+          <Property Name="ControlType" Type="int" Nullable="false" />
+          <Property Name="ViewOrder" Type="int" />
+          <Property Name="HelpUrl" Type="nvarchar" MaxLength="200" />
+          <Property Name="SupportsPartialRendering" Type="bit" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="int" />
+          <Property Name="CreatedOnDate" Type="datetime" />
+          <Property Name="LastModifiedByUserID" Type="int" />
+          <Property Name="LastModifiedOnDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ModuleDefinitions">
+          <Key>
+            <PropertyRef Name="ModuleDefID" />
+          </Key>
+          <Property Name="ModuleDefID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FriendlyName" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="DesktopModuleID" Type="int" Nullable="false" />
+          <Property Name="DefaultCacheTime" Type="int" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="int" />
+          <Property Name="CreatedOnDate" Type="datetime" />
+          <Property Name="LastModifiedByUserID" Type="int" />
+          <Property Name="LastModifiedOnDate" Type="datetime" />
+          <Property Name="DefaultMinExecutionTime" Type="int" />
+          <Property Name="DefaultMaxExecutionTime" Type="int" />
+        </EntityType>
+        <EntityType Name="ModulePermission">
+          <Key>
+            <PropertyRef Name="ModulePermissionID" />
+          </Key>
+          <Property Name="ModulePermissionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ModuleID" Type="int" Nullable="false" />
+          <Property Name="PermissionID" Type="int" Nullable="false" />
+          <Property Name="AllowAccess" Type="bit" Nullable="false" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="CreatedByUserID" Type="int" />
+          <Property Name="CreatedOnDate" Type="datetime" />
+          <Property Name="LastModifiedByUserID" Type="int" />
+          <Property Name="LastModifiedOnDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Modules">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Name="ModuleID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ModuleDefID" Type="int" Nullable="false" />
+          <Property Name="AllTabs" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="InheritViewPermissions" Type="bit" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="PortalID" Type="int" />
+          <Property Name="CreatedByUserID" Type="int" />
+          <Property Name="CreatedOnDate" Type="datetime" />
+          <Property Name="LastModifiedByUserID" Type="int" />
+          <Property Name="LastModifiedOnDate" Type="datetime" />
+          <Property Name="ContentItemID" Type="int" />
+        </EntityType>
+        <EntityType Name="ModuleSettings">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+            <PropertyRef Name="SettingName" />
+          </Key>
+          <Property Name="ModuleID" Type="int" Nullable="false" />
+          <Property Name="SettingName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="SettingValue" Type="nvarchar" Nullable="false" MaxLength="2000" />
+          <Property Name="CreatedByUserID" Type="int" />
+          <Property Name="CreatedOnDate" Type="datetime" />
+          <Property Name="LastModifiedByUserID" Type="int" />
+          <Property Name="LastModifiedOnDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PortalAlias">
+          <Key>
+            <PropertyRef Name="PortalAliasID" />
+          </Key>
+          <Property Name="PortalAliasID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PortalID" Type="int" Nullable="false" />
+          <Property Name="HTTPAlias" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreatedByUserID" Type="int" />
+          <Property Name="CreatedOnDate" Type="datetime" />
+          <Property Name="LastModifiedByUserID" Type="int" />
+          <Property Name="LastModifiedOnDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Portals">
+          <Key>
+            <PropertyRef Name="PortalID" />
+          </Key>
+          <Property Name="PortalID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ExpiryDate" Type="datetime" />
+          <Property Name="UserRegistration" Type="int" Nullable="false" />
+          <Property Name="BannerAdvertising" Type="int" Nullable="false" />
+          <Property Name="AdministratorId" Type="int" />
+          <Property Name="Currency" Type="char" MaxLength="3" />
+          <Property Name="HostFee" Type="money" Nullable="false" />
+          <Property Name="HostSpace" Type="int" Nullable="false" />
+          <Property Name="AdministratorRoleId" Type="int" />
+          <Property Name="RegisteredRoleId" Type="int" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PaymentProcessor" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProcessorUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProcessorPassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="SiteLogHistory" Type="int" />
+          <Property Name="DefaultLanguage" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="TimezoneOffset" Type="int" Nullable="false" />
+          <Property Name="HomeDirectory" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="PageQuota" Type="int" Nullable="false" />
+          <Property Name="UserQuota" Type="int" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="int" />
+          <Property Name="CreatedOnDate" Type="datetime" />
+          <Property Name="LastModifiedByUserID" Type="int" />
+          <Property Name="LastModifiedOnDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PortalSettings">
+          <Key>
+            <PropertyRef Name="PortalID" />
+            <PropertyRef Name="SettingName" />
+            <PropertyRef Name="CultureCode" />
+          </Key>
+          <Property Name="PortalID" Type="int" Nullable="false" />
+          <Property Name="SettingName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="SettingValue" Type="nvarchar" MaxLength="2000" />
+          <Property Name="CreatedByUserID" Type="int" />
+          <Property Name="CreatedOnDate" Type="datetime" />
+          <Property Name="LastModifiedByUserID" Type="int" />
+          <Property Name="LastModifiedOnDate" Type="datetime" />
+          <Property Name="CultureCode" Type="nvarchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="TabModules">
+          <Key>
+            <PropertyRef Name="TabModuleID" />
+          </Key>
+          <Property Name="TabModuleID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TabID" Type="int" Nullable="false" />
+          <Property Name="ModuleID" Type="int" Nullable="false" />
+          <Property Name="PaneName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ModuleOrder" Type="int" Nullable="false" />
+          <Property Name="CacheTime" Type="int" Nullable="false" />
+          <Property Name="Alignment" Type="nvarchar" MaxLength="10" />
+          <Property Name="Color" Type="nvarchar" MaxLength="20" />
+          <Property Name="Border" Type="nvarchar" MaxLength="1" />
+          <Property Name="IconFile" Type="nvarchar" MaxLength="100" />
+          <Property Name="Visibility" Type="int" Nullable="false" />
+          <Property Name="ContainerSrc" Type="nvarchar" MaxLength="200" />
+          <Property Name="DisplayTitle" Type="bit" Nullable="false" />
+          <Property Name="DisplayPrint" Type="bit" Nullable="false" />
+          <Property Name="DisplaySyndicate" Type="bit" Nullable="false" />
+          <Property Name="IsWebSlice" Type="bit" Nullable="false" />
+          <Property Name="WebSliceTitle" Type="nvarchar" MaxLength="256" />
+          <Property Name="WebSliceExpiryDate" Type="datetime" />
+          <Property Name="WebSliceTTL" Type="int" />
+          <Property Name="CreatedByUserID" Type="int" />
+          <Property Name="CreatedOnDate" Type="datetime" />
+          <Property Name="LastModifiedByUserID" Type="int" />
+          <Property Name="LastModifiedOnDate" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CacheMethod" Type="varchar" MaxLength="50" />
+          <Property Name="ModuleTitle" Type="nvarchar" MaxLength="256" />
+          <Property Name="Header" Type="ntext" />
+          <Property Name="Footer" Type="ntext" />
+          <Property Name="CultureCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="UniqueId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VersionGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DefaultLanguageGuid" Type="uniqueidentifier" />
+          <Property Name="LocalizedVersionGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MinExecutionTime" Type="int" />
+          <Property Name="MaxExecutionTime" Type="int" />
+        </EntityType>
+        <EntityType Name="TabModuleSettings">
+          <Key>
+            <PropertyRef Name="TabModuleID" />
+            <PropertyRef Name="SettingName" />
+          </Key>
+          <Property Name="TabModuleID" Type="int" Nullable="false" />
+          <Property Name="SettingName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="SettingValue" Type="nvarchar" Nullable="false" MaxLength="2000" />
+          <Property Name="CreatedByUserID" Type="int" />
+          <Property Name="CreatedOnDate" Type="datetime" />
+          <Property Name="LastModifiedByUserID" Type="int" />
+          <Property Name="LastModifiedOnDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TabPermission">
+          <Key>
+            <PropertyRef Name="TabPermissionID" />
+          </Key>
+          <Property Name="TabPermissionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TabID" Type="int" Nullable="false" />
+          <Property Name="PermissionID" Type="int" Nullable="false" />
+          <Property Name="AllowAccess" Type="bit" Nullable="false" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="CreatedByUserID" Type="int" />
+          <Property Name="CreatedOnDate" Type="datetime" />
+          <Property Name="LastModifiedByUserID" Type="int" />
+          <Property Name="LastModifiedOnDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tabs">
+          <Key>
+            <PropertyRef Name="TabID" />
+          </Key>
+          <Property Name="TabID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TabOrder" Type="int" Nullable="false" />
+          <Property Name="PortalID" Type="int" />
+          <Property Name="TabName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="IsVisible" Type="bit" Nullable="false" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="Level" Type="int" Nullable="false" />
+          <Property Name="IconFile" Type="nvarchar" MaxLength="100" />
+          <Property Name="DisableLink" Type="bit" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="2048" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2048" />
+          <Property Name="KeyWords" Type="nvarchar" MaxLength="2048" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="255" />
+          <Property Name="SkinSrc" Type="nvarchar" MaxLength="200" />
+          <Property Name="ContainerSrc" Type="nvarchar" MaxLength="200" />
+          <Property Name="TabPath" Type="nvarchar" MaxLength="255" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="RefreshInterval" Type="int" />
+          <Property Name="PageHeadText" Type="nvarchar" MaxLength="2048" />
+          <Property Name="IsSecure" Type="bit" Nullable="false" />
+          <Property Name="PermanentRedirect" Type="bit" Nullable="false" />
+          <Property Name="SiteMapPriority" Type="float" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="int" />
+          <Property Name="CreatedOnDate" Type="datetime" />
+          <Property Name="LastModifiedByUserID" Type="int" />
+          <Property Name="LastModifiedOnDate" Type="datetime" />
+          <Property Name="IconFileLarge" Type="nvarchar" MaxLength="100" />
+          <Property Name="CultureCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="ContentItemID" Type="int" />
+          <Property Name="UniqueId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VersionGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DefaultLanguageGuid" Type="uniqueidentifier" />
+          <Property Name="LocalizedVersionGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TemplateCacheDuration" Type="int" />
+          <Property Name="MaxModuleLoadTime" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'GlobalCMS.dbo.TabSettings' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="TabSettings">
+          <Key>
+            <PropertyRef Name="TabID" />
+            <PropertyRef Name="SettingName" />
+            <PropertyRef Name="SettingValue" />
+          </Key>
+          <Property Name="TabID" Type="int" Nullable="false" />
+          <Property Name="SettingName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="SettingValue" Type="nvarchar" Nullable="false" MaxLength="2000" />
+          <Property Name="CreatedByUserID" Type="int" />
+          <Property Name="CreatedOnDate" Type="datetime" />
+          <Property Name="LastModifiedByUserID" Type="int" />
+          <Property Name="LastModifiedOnDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_ModuleControls_ModuleDefinitions">
+          <End Role="ModuleDefinitions" Type="DNNModel.Store.ModuleDefinitions" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ModuleControls" Type="DNNModel.Store.ModuleControls" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModuleDefinitions">
+              <PropertyRef Name="ModuleDefID" />
+            </Principal>
+            <Dependent Role="ModuleControls">
+              <PropertyRef Name="ModuleDefID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModuleDefinitions_DesktopModules">
+          <End Role="DesktopModules" Type="DNNModel.Store.DesktopModules" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ModuleDefinitions" Type="DNNModel.Store.ModuleDefinitions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DesktopModules">
+              <PropertyRef Name="DesktopModuleID" />
+            </Principal>
+            <Dependent Role="ModuleDefinitions">
+              <PropertyRef Name="DesktopModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModulePermission_Modules">
+          <End Role="Modules" Type="DNNModel.Store.Modules" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ModulePermission" Type="DNNModel.Store.ModulePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="ModulePermission">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modules_ModuleDefinitions">
+          <End Role="ModuleDefinitions" Type="DNNModel.Store.ModuleDefinitions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Modules" Type="DNNModel.Store.Modules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModuleDefinitions">
+              <PropertyRef Name="ModuleDefID" />
+            </Principal>
+            <Dependent Role="Modules">
+              <PropertyRef Name="ModuleDefID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modules_Portals">
+          <End Role="Portals" Type="DNNModel.Store.Portals" Multiplicity="0..1" />
+          <End Role="Modules" Type="DNNModel.Store.Modules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Portals">
+              <PropertyRef Name="PortalID" />
+            </Principal>
+            <Dependent Role="Modules">
+              <PropertyRef Name="PortalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModuleSettings_Modules">
+          <End Role="Modules" Type="DNNModel.Store.Modules" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ModuleSettings" Type="DNNModel.Store.ModuleSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="ModuleSettings">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PortalAlias_Portals">
+          <End Role="Portals" Type="DNNModel.Store.Portals" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PortalAlias" Type="DNNModel.Store.PortalAlias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Portals">
+              <PropertyRef Name="PortalID" />
+            </Principal>
+            <Dependent Role="PortalAlias">
+              <PropertyRef Name="PortalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PortalSettings_Portals">
+          <End Role="Portals" Type="DNNModel.Store.Portals" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PortalSettings" Type="DNNModel.Store.PortalSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Portals">
+              <PropertyRef Name="PortalID" />
+            </Principal>
+            <Dependent Role="PortalSettings">
+              <PropertyRef Name="PortalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TabModules_Modules">
+          <End Role="Modules" Type="DNNModel.Store.Modules" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TabModules" Type="DNNModel.Store.TabModules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="TabModules">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TabModules_Tabs">
+          <End Role="Tabs" Type="DNNModel.Store.Tabs" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TabModules" Type="DNNModel.Store.TabModules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tabs">
+              <PropertyRef Name="TabID" />
+            </Principal>
+            <Dependent Role="TabModules">
+              <PropertyRef Name="TabID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TabModuleSettings_TabModules">
+          <End Role="TabModules" Type="DNNModel.Store.TabModules" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TabModuleSettings" Type="DNNModel.Store.TabModuleSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabModules">
+              <PropertyRef Name="TabModuleID" />
+            </Principal>
+            <Dependent Role="TabModuleSettings">
+              <PropertyRef Name="TabModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TabPermission_Tabs">
+          <End Role="Tabs" Type="DNNModel.Store.Tabs" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TabPermission" Type="DNNModel.Store.TabPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tabs">
+              <PropertyRef Name="TabID" />
+            </Principal>
+            <Dependent Role="TabPermission">
+              <PropertyRef Name="TabID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tabs_Portals">
+          <End Role="Portals" Type="DNNModel.Store.Portals" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tabs" Type="DNNModel.Store.Tabs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Portals">
+              <PropertyRef Name="PortalID" />
+            </Principal>
+            <Dependent Role="Tabs">
+              <PropertyRef Name="PortalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tabs_Tabs">
+          <End Role="Tabs" Type="DNNModel.Store.Tabs" Multiplicity="0..1" />
+          <End Role="Tabs1" Type="DNNModel.Store.Tabs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tabs">
+              <PropertyRef Name="TabID" />
+            </Principal>
+            <Dependent Role="Tabs1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TabSettings_Tabs">
+          <End Role="Tabs" Type="DNNModel.Store.Tabs" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TabSettings" Type="DNNModel.Store.TabSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tabs">
+              <PropertyRef Name="TabID" />
+            </Principal>
+            <Dependent Role="TabSettings">
+              <PropertyRef Name="TabID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DNNModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="DNNEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DesktopModulePermission" EntityType="DNNModel.DesktopModulePermission" />
+          <EntitySet Name="DesktopModules" EntityType="DNNModel.DesktopModules" />
+          <EntitySet Name="ModuleControls" EntityType="DNNModel.ModuleControls" />
+          <EntitySet Name="ModuleDefinitions" EntityType="DNNModel.ModuleDefinitions" />
+          <EntitySet Name="ModulePermission" EntityType="DNNModel.ModulePermission" />
+          <EntitySet Name="Modules" EntityType="DNNModel.Modules" />
+          <EntitySet Name="ModuleSettings" EntityType="DNNModel.ModuleSettings" />
+          <EntitySet Name="PortalAlias" EntityType="DNNModel.PortalAlias" />
+          <EntitySet Name="Portals" EntityType="DNNModel.Portals" />
+          <EntitySet Name="PortalSettings" EntityType="DNNModel.PortalSettings" />
+          <EntitySet Name="TabModules" EntityType="DNNModel.TabModules" />
+          <EntitySet Name="TabModuleSettings" EntityType="DNNModel.TabModuleSettings" />
+          <EntitySet Name="TabPermission" EntityType="DNNModel.TabPermission" />
+          <EntitySet Name="Tabs" EntityType="DNNModel.Tabs" />
+          <EntitySet Name="TabSettings" EntityType="DNNModel.TabSettings" />
+          <AssociationSet Name="FK_ModuleDefinitions_DesktopModules" Association="DNNModel.FK_ModuleDefinitions_DesktopModules">
+            <End Role="DesktopModules" EntitySet="DesktopModules" />
+            <End Role="ModuleDefinitions" EntitySet="ModuleDefinitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModuleControls_ModuleDefinitions" Association="DNNModel.FK_ModuleControls_ModuleDefinitions">
+            <End Role="ModuleDefinitions" EntitySet="ModuleDefinitions" />
+            <End Role="ModuleControls" EntitySet="ModuleControls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modules_ModuleDefinitions" Association="DNNModel.FK_Modules_ModuleDefinitions">
+            <End Role="ModuleDefinitions" EntitySet="ModuleDefinitions" />
+            <End Role="Modules" EntitySet="Modules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModulePermission_Modules" Association="DNNModel.FK_ModulePermission_Modules">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="ModulePermission" EntitySet="ModulePermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modules_Portals" Association="DNNModel.FK_Modules_Portals">
+            <End Role="Portals" EntitySet="Portals" />
+            <End Role="Modules" EntitySet="Modules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModuleSettings_Modules" Association="DNNModel.FK_ModuleSettings_Modules">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="ModuleSettings" EntitySet="ModuleSettings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TabModules_Modules" Association="DNNModel.FK_TabModules_Modules">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="TabModules" EntitySet="TabModules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PortalAlias_Portals" Association="DNNModel.FK_PortalAlias_Portals">
+            <End Role="Portals" EntitySet="Portals" />
+            <End Role="PortalAlias" EntitySet="PortalAlias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PortalSettings_Portals" Association="DNNModel.FK_PortalSettings_Portals">
+            <End Role="Portals" EntitySet="Portals" />
+            <End Role="PortalSettings" EntitySet="PortalSettings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tabs_Portals" Association="DNNModel.FK_Tabs_Portals">
+            <End Role="Portals" EntitySet="Portals" />
+            <End Role="Tabs" EntitySet="Tabs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TabModules_Tabs" Association="DNNModel.FK_TabModules_Tabs">
+            <End Role="Tabs" EntitySet="Tabs" />
+            <End Role="TabModules" EntitySet="TabModules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TabModuleSettings_TabModules" Association="DNNModel.FK_TabModuleSettings_TabModules">
+            <End Role="TabModules" EntitySet="TabModules" />
+            <End Role="TabModuleSettings" EntitySet="TabModuleSettings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TabPermission_Tabs" Association="DNNModel.FK_TabPermission_Tabs">
+            <End Role="Tabs" EntitySet="Tabs" />
+            <End Role="TabPermission" EntitySet="TabPermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tabs_Tabs" Association="DNNModel.FK_Tabs_Tabs">
+            <End Role="Tabs" EntitySet="Tabs" />
+            <End Role="Tabs1" EntitySet="Tabs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TabSettings_Tabs" Association="DNNModel.FK_TabSettings_Tabs">
+            <End Role="Tabs" EntitySet="Tabs" />
+            <End Role="TabSettings" EntitySet="TabSettings" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="DesktopModulePermission">
+          <Key>
+            <PropertyRef Name="DesktopModulePermissionID" />
+          </Key>
+          <Property Name="DesktopModulePermissionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PortalDesktopModuleID" Type="Int32" Nullable="false" />
+          <Property Name="PermissionID" Type="Int32" Nullable="false" />
+          <Property Name="AllowAccess" Type="Boolean" Nullable="false" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="CreatedByUserID" Type="Int32" />
+          <Property Name="CreatedOnDate" Type="DateTime" />
+          <Property Name="LastModifiedByUserID" Type="Int32" />
+          <Property Name="LastModifiedOnDate" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="DesktopModules">
+          <Key>
+            <PropertyRef Name="DesktopModuleID" />
+          </Key>
+          <Property Name="DesktopModuleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FriendlyName" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="2000" Unicode="true" FixedLength="false" />
+          <Property Name="Version" Type="String" MaxLength="8" Unicode="true" FixedLength="false" />
+          <Property Name="IsPremium" Type="Boolean" Nullable="false" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="BusinessControllerClass" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="FolderName" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="ModuleName" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="SupportedFeatures" Type="Int32" Nullable="false" />
+          <Property Name="CompatibleVersions" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="Dependencies" Type="String" MaxLength="400" Unicode="true" FixedLength="false" />
+          <Property Name="Permissions" Type="String" MaxLength="400" Unicode="true" FixedLength="false" />
+          <Property Name="PackageID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="Int32" />
+          <Property Name="CreatedOnDate" Type="DateTime" />
+          <Property Name="LastModifiedByUserID" Type="Int32" />
+          <Property Name="LastModifiedOnDate" Type="DateTime" />
+          <NavigationProperty Name="ModuleDefinitions" Relationship="DNNModel.FK_ModuleDefinitions_DesktopModules" FromRole="DesktopModules" ToRole="ModuleDefinitions" />
+        </EntityType>
+        <EntityType Name="ModuleControls">
+          <Key>
+            <PropertyRef Name="ModuleControlID" />
+          </Key>
+          <Property Name="ModuleControlID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModuleDefID" Type="Int32" />
+          <Property Name="ControlKey" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ControlTitle" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ControlSrc" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="IconFile" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="ControlType" Type="Int32" Nullable="false" />
+          <Property Name="ViewOrder" Type="Int32" />
+          <Property Name="HelpUrl" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="SupportsPartialRendering" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="Int32" />
+          <Property Name="CreatedOnDate" Type="DateTime" />
+          <Property Name="LastModifiedByUserID" Type="Int32" />
+          <Property Name="LastModifiedOnDate" Type="DateTime" />
+          <NavigationProperty Name="ModuleDefinitions" Relationship="DNNModel.FK_ModuleControls_ModuleDefinitions" FromRole="ModuleControls" ToRole="ModuleDefinitions" />
+        </EntityType>
+        <EntityType Name="ModuleDefinitions">
+          <Key>
+            <PropertyRef Name="ModuleDefID" />
+          </Key>
+          <Property Name="ModuleDefID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FriendlyName" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="DesktopModuleID" Type="Int32" Nullable="false" />
+          <Property Name="DefaultCacheTime" Type="Int32" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="Int32" />
+          <Property Name="CreatedOnDate" Type="DateTime" />
+          <Property Name="LastModifiedByUserID" Type="Int32" />
+          <Property Name="LastModifiedOnDate" Type="DateTime" />
+          <Property Name="DefaultMinExecutionTime" Type="Int32" />
+          <Property Name="DefaultMaxExecutionTime" Type="Int32" />
+          <NavigationProperty Name="DesktopModules" Relationship="DNNModel.FK_ModuleDefinitions_DesktopModules" FromRole="ModuleDefinitions" ToRole="DesktopModules" />
+          <NavigationProperty Name="ModuleControls" Relationship="DNNModel.FK_ModuleControls_ModuleDefinitions" FromRole="ModuleDefinitions" ToRole="ModuleControls" />
+          <NavigationProperty Name="Modules" Relationship="DNNModel.FK_Modules_ModuleDefinitions" FromRole="ModuleDefinitions" ToRole="Modules" />
+        </EntityType>
+        <EntityType Name="ModulePermission">
+          <Key>
+            <PropertyRef Name="ModulePermissionID" />
+          </Key>
+          <Property Name="ModulePermissionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModuleID" Type="Int32" Nullable="false" />
+          <Property Name="PermissionID" Type="Int32" Nullable="false" />
+          <Property Name="AllowAccess" Type="Boolean" Nullable="false" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="CreatedByUserID" Type="Int32" />
+          <Property Name="CreatedOnDate" Type="DateTime" />
+          <Property Name="LastModifiedByUserID" Type="Int32" />
+          <Property Name="LastModifiedOnDate" Type="DateTime" />
+          <NavigationProperty Name="Modules" Relationship="DNNModel.FK_ModulePermission_Modules" FromRole="ModulePermission" ToRole="Modules" />
+        </EntityType>
+        <EntityType Name="Modules">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Name="ModuleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModuleDefID" Type="Int32" Nullable="false" />
+          <Property Name="AllTabs" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="InheritViewPermissions" Type="Boolean" />
+          <Property Name="StartDate" Type="DateTime" />
+          <Property Name="EndDate" Type="DateTime" />
+          <Property Name="PortalID" Type="Int32" />
+          <Property Name="CreatedByUserID" Type="Int32" />
+          <Property Name="CreatedOnDate" Type="DateTime" />
+          <Property Name="LastModifiedByUserID" Type="Int32" />
+          <Property Name="LastModifiedOnDate" Type="DateTime" />
+          <Property Name="ContentItemID" Type="Int32" />
+          <NavigationProperty Name="ModuleDefinitions" Relationship="DNNModel.FK_Modules_ModuleDefinitions" FromRole="Modules" ToRole="ModuleDefinitions" />
+          <NavigationProperty Name="ModulePermission" Relationship="DNNModel.FK_ModulePermission_Modules" FromRole="Modules" ToRole="ModulePermission" />
+          <NavigationProperty Name="Portals" Relationship="DNNModel.FK_Modules_Portals" FromRole="Modules" ToRole="Portals" />
+          <NavigationProperty Name="ModuleSettings" Relationship="DNNModel.FK_ModuleSettings_Modules" FromRole="Modules" ToRole="ModuleSettings" />
+          <NavigationProperty Name="TabModules" Relationship="DNNModel.FK_TabModules_Modules" FromRole="Modules" ToRole="TabModules" />
+        </EntityType>
+        <EntityType Name="ModuleSettings">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+            <PropertyRef Name="SettingName" />
+          </Key>
+          <Property Name="ModuleID" Type="Int32" Nullable="false" />
+          <Property Name="SettingName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SettingValue" Type="String" Nullable="false" MaxLength="2000" Unicode="true" FixedLength="false" />
+          <Property Name="CreatedByUserID" Type="Int32" />
+          <Property Name="CreatedOnDate" Type="DateTime" />
+          <Property Name="LastModifiedByUserID" Type="Int32" />
+          <Property Name="LastModifiedOnDate" Type="DateTime" />
+          <NavigationProperty Name="Modules" Relationship="DNNModel.FK_ModuleSettings_Modules" FromRole="ModuleSettings" ToRole="Modules" />
+        </EntityType>
+        <EntityType Name="PortalAlias">
+          <Key>
+            <PropertyRef Name="PortalAliasID" />
+          </Key>
+          <Property Name="PortalAliasID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PortalID" Type="Int32" Nullable="false" />
+          <Property Name="HTTPAlias" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="CreatedByUserID" Type="Int32" />
+          <Property Name="CreatedOnDate" Type="DateTime" />
+          <Property Name="LastModifiedByUserID" Type="Int32" />
+          <Property Name="LastModifiedOnDate" Type="DateTime" />
+          <NavigationProperty Name="Portals" Relationship="DNNModel.FK_PortalAlias_Portals" FromRole="PortalAlias" ToRole="Portals" />
+        </EntityType>
+        <EntityType Name="Portals">
+          <Key>
+            <PropertyRef Name="PortalID" />
+          </Key>
+          <Property Name="PortalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpiryDate" Type="DateTime" />
+          <Property Name="UserRegistration" Type="Int32" Nullable="false" />
+          <Property Name="BannerAdvertising" Type="Int32" Nullable="false" />
+          <Property Name="AdministratorId" Type="Int32" />
+          <Property Name="Currency" Type="String" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Name="HostFee" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="HostSpace" Type="Int32" Nullable="false" />
+          <Property Name="AdministratorRoleId" Type="Int32" />
+          <Property Name="RegisteredRoleId" Type="Int32" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="PaymentProcessor" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ProcessorUserId" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ProcessorPassword" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SiteLogHistory" Type="Int32" />
+          <Property Name="DefaultLanguage" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="TimezoneOffset" Type="Int32" Nullable="false" />
+          <Property Name="HomeDirectory" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="PageQuota" Type="Int32" Nullable="false" />
+          <Property Name="UserQuota" Type="Int32" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="Int32" />
+          <Property Name="CreatedOnDate" Type="DateTime" />
+          <Property Name="LastModifiedByUserID" Type="Int32" />
+          <Property Name="LastModifiedOnDate" Type="DateTime" />
+          <NavigationProperty Name="Modules" Relationship="DNNModel.FK_Modules_Portals" FromRole="Portals" ToRole="Modules" />
+          <NavigationProperty Name="PortalAlias" Relationship="DNNModel.FK_PortalAlias_Portals" FromRole="Portals" ToRole="PortalAlias" />
+          <NavigationProperty Name="PortalSettings" Relationship="DNNModel.FK_PortalSettings_Portals" FromRole="Portals" ToRole="PortalSettings" />
+          <NavigationProperty Name="Tabs" Relationship="DNNModel.FK_Tabs_Portals" FromRole="Portals" ToRole="Tabs" />
+        </EntityType>
+        <EntityType Name="PortalSettings">
+          <Key>
+            <PropertyRef Name="PortalID" />
+            <PropertyRef Name="SettingName" />
+            <PropertyRef Name="CultureCode" />
+          </Key>
+          <Property Name="PortalID" Type="Int32" Nullable="false" />
+          <Property Name="SettingName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SettingValue" Type="String" MaxLength="2000" Unicode="true" FixedLength="false" />
+          <Property Name="CreatedByUserID" Type="Int32" />
+          <Property Name="CreatedOnDate" Type="DateTime" />
+          <Property Name="LastModifiedByUserID" Type="Int32" />
+          <Property Name="LastModifiedOnDate" Type="DateTime" />
+          <Property Name="CultureCode" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Portals" Relationship="DNNModel.FK_PortalSettings_Portals" FromRole="PortalSettings" ToRole="Portals" />
+        </EntityType>
+        <EntityType Name="TabModules">
+          <Key>
+            <PropertyRef Name="TabModuleID" />
+          </Key>
+          <Property Name="TabModuleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TabID" Type="Int32" Nullable="false" />
+          <Property Name="ModuleID" Type="Int32" Nullable="false" />
+          <Property Name="PaneName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ModuleOrder" Type="Int32" Nullable="false" />
+          <Property Name="CacheTime" Type="Int32" Nullable="false" />
+          <Property Name="Alignment" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Color" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Border" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="IconFile" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Visibility" Type="Int32" Nullable="false" />
+          <Property Name="ContainerSrc" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="DisplayTitle" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayPrint" Type="Boolean" Nullable="false" />
+          <Property Name="DisplaySyndicate" Type="Boolean" Nullable="false" />
+          <Property Name="IsWebSlice" Type="Boolean" Nullable="false" />
+          <Property Name="WebSliceTitle" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="WebSliceExpiryDate" Type="DateTime" />
+          <Property Name="WebSliceTTL" Type="Int32" />
+          <Property Name="CreatedByUserID" Type="Int32" />
+          <Property Name="CreatedOnDate" Type="DateTime" />
+          <Property Name="LastModifiedByUserID" Type="Int32" />
+          <Property Name="LastModifiedOnDate" Type="DateTime" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CacheMethod" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ModuleTitle" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Header" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Footer" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CultureCode" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="UniqueId" Type="Guid" Nullable="false" />
+          <Property Name="VersionGuid" Type="Guid" Nullable="false" />
+          <Property Name="DefaultLanguageGuid" Type="Guid" />
+          <Property Name="LocalizedVersionGuid" Type="Guid" Nullable="false" />
+          <Property Name="MinExecutionTime" Type="Int32" />
+          <Property Name="MaxExecutionTime" Type="Int32" />
+          <NavigationProperty Name="Modules" Relationship="DNNModel.FK_TabModules_Modules" FromRole="TabModules" ToRole="Modules" />
+          <NavigationProperty Name="Tabs" Relationship="DNNModel.FK_TabModules_Tabs" FromRole="TabModules" ToRole="Tabs" />
+          <NavigationProperty Name="TabModuleSettings" Relationship="DNNModel.FK_TabModuleSettings_TabModules" FromRole="TabModules" ToRole="TabModuleSettings" />
+        </EntityType>
+        <EntityType Name="TabModuleSettings">
+          <Key>
+            <PropertyRef Name="TabModuleID" />
+            <PropertyRef Name="SettingName" />
+          </Key>
+          <Property Name="TabModuleID" Type="Int32" Nullable="false" />
+          <Property Name="SettingName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SettingValue" Type="String" Nullable="false" MaxLength="2000" Unicode="true" FixedLength="false" />
+          <Property Name="CreatedByUserID" Type="Int32" />
+          <Property Name="CreatedOnDate" Type="DateTime" />
+          <Property Name="LastModifiedByUserID" Type="Int32" />
+          <Property Name="LastModifiedOnDate" Type="DateTime" />
+          <NavigationProperty Name="TabModules" Relationship="DNNModel.FK_TabModuleSettings_TabModules" FromRole="TabModuleSettings" ToRole="TabModules" />
+        </EntityType>
+        <EntityType Name="TabPermission">
+          <Key>
+            <PropertyRef Name="TabPermissionID" />
+          </Key>
+          <Property Name="TabPermissionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TabID" Type="Int32" Nullable="false" />
+          <Property Name="PermissionID" Type="Int32" Nullable="false" />
+          <Property Name="AllowAccess" Type="Boolean" Nullable="false" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="CreatedByUserID" Type="Int32" />
+          <Property Name="CreatedOnDate" Type="DateTime" />
+          <Property Name="LastModifiedByUserID" Type="Int32" />
+          <Property Name="LastModifiedOnDate" Type="DateTime" />
+          <NavigationProperty Name="Tabs" Relationship="DNNModel.FK_TabPermission_Tabs" FromRole="TabPermission" ToRole="Tabs" />
+        </EntityType>
+        <EntityType Name="Tabs">
+          <Key>
+            <PropertyRef Name="TabID" />
+          </Key>
+          <Property Name="TabID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TabOrder" Type="Int32" Nullable="false" />
+          <Property Name="PortalID" Type="Int32" />
+          <Property Name="TabName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="IsVisible" Type="Boolean" Nullable="false" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+          <Property Name="IconFile" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="DisableLink" Type="Boolean" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="2048" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="2048" Unicode="true" FixedLength="false" />
+          <Property Name="KeyWords" Type="String" MaxLength="2048" Unicode="true" FixedLength="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="SkinSrc" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="ContainerSrc" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="TabPath" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="StartDate" Type="DateTime" />
+          <Property Name="EndDate" Type="DateTime" />
+          <Property Name="RefreshInterval" Type="Int32" />
+          <Property Name="PageHeadText" Type="String" MaxLength="2048" Unicode="true" FixedLength="false" />
+          <Property Name="IsSecure" Type="Boolean" Nullable="false" />
+          <Property Name="PermanentRedirect" Type="Boolean" Nullable="false" />
+          <Property Name="SiteMapPriority" Type="Double" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="Int32" />
+          <Property Name="CreatedOnDate" Type="DateTime" />
+          <Property Name="LastModifiedByUserID" Type="Int32" />
+          <Property Name="LastModifiedOnDate" Type="DateTime" />
+          <Property Name="IconFileLarge" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="CultureCode" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="ContentItemID" Type="Int32" />
+          <Property Name="UniqueId" Type="Guid" Nullable="false" />
+          <Property Name="VersionGuid" Type="Guid" Nullable="false" />
+          <Property Name="DefaultLanguageGuid" Type="Guid" />
+          <Property Name="LocalizedVersionGuid" Type="Guid" Nullable="false" />
+          <Property Name="TemplateCacheDuration" Type="Int32" />
+          <Property Name="MaxModuleLoadTime" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Portals" Relationship="DNNModel.FK_Tabs_Portals" FromRole="Tabs" ToRole="Portals" />
+          <NavigationProperty Name="TabModules" Relationship="DNNModel.FK_TabModules_Tabs" FromRole="Tabs" ToRole="TabModules" />
+          <NavigationProperty Name="TabPermission" Relationship="DNNModel.FK_TabPermission_Tabs" FromRole="Tabs" ToRole="TabPermission" />
+          <NavigationProperty Name="Tabs1" Relationship="DNNModel.FK_Tabs_Tabs" FromRole="Tabs" ToRole="Tabs1" />
+          <NavigationProperty Name="Tabs2" Relationship="DNNModel.FK_Tabs_Tabs" FromRole="Tabs1" ToRole="Tabs" />
+          <NavigationProperty Name="TabSettings" Relationship="DNNModel.FK_TabSettings_Tabs" FromRole="Tabs" ToRole="TabSettings" />
+        </EntityType>
+        <EntityType Name="TabSettings">
+          <Key>
+            <PropertyRef Name="TabID" />
+            <PropertyRef Name="SettingName" />
+            <PropertyRef Name="SettingValue" />
+          </Key>
+          <Property Name="TabID" Type="Int32" Nullable="false" />
+          <Property Name="SettingName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SettingValue" Type="String" Nullable="false" MaxLength="2000" Unicode="true" FixedLength="false" />
+          <Property Name="CreatedByUserID" Type="Int32" />
+          <Property Name="CreatedOnDate" Type="DateTime" />
+          <Property Name="LastModifiedByUserID" Type="Int32" />
+          <Property Name="LastModifiedOnDate" Type="DateTime" />
+          <NavigationProperty Name="Tabs" Relationship="DNNModel.FK_TabSettings_Tabs" FromRole="TabSettings" ToRole="Tabs" />
+        </EntityType>
+        <Association Name="FK_ModuleDefinitions_DesktopModules">
+          <End Role="DesktopModules" Type="DNNModel.DesktopModules" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ModuleDefinitions" Type="DNNModel.ModuleDefinitions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DesktopModules">
+              <PropertyRef Name="DesktopModuleID" />
+            </Principal>
+            <Dependent Role="ModuleDefinitions">
+              <PropertyRef Name="DesktopModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModuleControls_ModuleDefinitions">
+          <End Role="ModuleDefinitions" Type="DNNModel.ModuleDefinitions" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ModuleControls" Type="DNNModel.ModuleControls" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModuleDefinitions">
+              <PropertyRef Name="ModuleDefID" />
+            </Principal>
+            <Dependent Role="ModuleControls">
+              <PropertyRef Name="ModuleDefID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modules_ModuleDefinitions">
+          <End Role="ModuleDefinitions" Type="DNNModel.ModuleDefinitions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Modules" Type="DNNModel.Modules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModuleDefinitions">
+              <PropertyRef Name="ModuleDefID" />
+            </Principal>
+            <Dependent Role="Modules">
+              <PropertyRef Name="ModuleDefID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModulePermission_Modules">
+          <End Role="Modules" Type="DNNModel.Modules" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ModulePermission" Type="DNNModel.ModulePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="ModulePermission">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modules_Portals">
+          <End Role="Portals" Type="DNNModel.Portals" Multiplicity="0..1" />
+          <End Role="Modules" Type="DNNModel.Modules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Portals">
+              <PropertyRef Name="PortalID" />
+            </Principal>
+            <Dependent Role="Modules">
+              <PropertyRef Name="PortalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModuleSettings_Modules">
+          <End Role="Modules" Type="DNNModel.Modules" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ModuleSettings" Type="DNNModel.ModuleSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="ModuleSettings">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TabModules_Modules">
+          <End Role="Modules" Type="DNNModel.Modules" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TabModules" Type="DNNModel.TabModules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="TabModules">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PortalAlias_Portals">
+          <End Role="Portals" Type="DNNModel.Portals" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PortalAlias" Type="DNNModel.PortalAlias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Portals">
+              <PropertyRef Name="PortalID" />
+            </Principal>
+            <Dependent Role="PortalAlias">
+              <PropertyRef Name="PortalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PortalSettings_Portals">
+          <End Role="Portals" Type="DNNModel.Portals" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PortalSettings" Type="DNNModel.PortalSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Portals">
+              <PropertyRef Name="PortalID" />
+            </Principal>
+            <Dependent Role="PortalSettings">
+              <PropertyRef Name="PortalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tabs_Portals">
+          <End Role="Portals" Type="DNNModel.Portals" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tabs" Type="DNNModel.Tabs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Portals">
+              <PropertyRef Name="PortalID" />
+            </Principal>
+            <Dependent Role="Tabs">
+              <PropertyRef Name="PortalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TabModules_Tabs">
+          <End Role="Tabs" Type="DNNModel.Tabs" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TabModules" Type="DNNModel.TabModules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tabs">
+              <PropertyRef Name="TabID" />
+            </Principal>
+            <Dependent Role="TabModules">
+              <PropertyRef Name="TabID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TabModuleSettings_TabModules">
+          <End Role="TabModules" Type="DNNModel.TabModules" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TabModuleSettings" Type="DNNModel.TabModuleSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabModules">
+              <PropertyRef Name="TabModuleID" />
+            </Principal>
+            <Dependent Role="TabModuleSettings">
+              <PropertyRef Name="TabModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TabPermission_Tabs">
+          <End Role="Tabs" Type="DNNModel.Tabs" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TabPermission" Type="DNNModel.TabPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tabs">
+              <PropertyRef Name="TabID" />
+            </Principal>
+            <Dependent Role="TabPermission">
+              <PropertyRef Name="TabID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tabs_Tabs">
+          <End Role="Tabs" Type="DNNModel.Tabs" Multiplicity="0..1" />
+          <End Role="Tabs1" Type="DNNModel.Tabs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tabs">
+              <PropertyRef Name="TabID" />
+            </Principal>
+            <Dependent Role="Tabs1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TabSettings_Tabs">
+          <End Role="Tabs" Type="DNNModel.Tabs" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TabSettings" Type="DNNModel.TabSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tabs">
+              <PropertyRef Name="TabID" />
+            </Principal>
+            <Dependent Role="TabSettings">
+              <PropertyRef Name="TabID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DNNModelStoreContainer" CdmEntityContainer="DNNEntities">
+          <EntitySetMapping Name="DesktopModulePermission"><EntityTypeMapping TypeName="DNNModel.DesktopModulePermission"><MappingFragment StoreEntitySet="DesktopModulePermission">
+            <ScalarProperty Name="DesktopModulePermissionID" ColumnName="DesktopModulePermissionID" />
+            <ScalarProperty Name="PortalDesktopModuleID" ColumnName="PortalDesktopModuleID" />
+            <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
+            <ScalarProperty Name="AllowAccess" ColumnName="AllowAccess" />
+            <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+            <ScalarProperty Name="UserID" ColumnName="UserID" />
+            <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+            <ScalarProperty Name="CreatedOnDate" ColumnName="CreatedOnDate" />
+            <ScalarProperty Name="LastModifiedByUserID" ColumnName="LastModifiedByUserID" />
+            <ScalarProperty Name="LastModifiedOnDate" ColumnName="LastModifiedOnDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="DesktopModules"><EntityTypeMapping TypeName="DNNModel.DesktopModules"><MappingFragment StoreEntitySet="DesktopModules">
+            <ScalarProperty Name="DesktopModuleID" ColumnName="DesktopModuleID" />
+            <ScalarProperty Name="FriendlyName" ColumnName="FriendlyName" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Version" ColumnName="Version" />
+            <ScalarProperty Name="IsPremium" ColumnName="IsPremium" />
+            <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+            <ScalarProperty Name="BusinessControllerClass" ColumnName="BusinessControllerClass" />
+            <ScalarProperty Name="FolderName" ColumnName="FolderName" />
+            <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+            <ScalarProperty Name="SupportedFeatures" ColumnName="SupportedFeatures" />
+            <ScalarProperty Name="CompatibleVersions" ColumnName="CompatibleVersions" />
+            <ScalarProperty Name="Dependencies" ColumnName="Dependencies" />
+            <ScalarProperty Name="Permissions" ColumnName="Permissions" />
+            <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+            <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+            <ScalarProperty Name="CreatedOnDate" ColumnName="CreatedOnDate" />
+            <ScalarProperty Name="LastModifiedByUserID" ColumnName="LastModifiedByUserID" />
+            <ScalarProperty Name="LastModifiedOnDate" ColumnName="LastModifiedOnDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ModuleControls"><EntityTypeMapping TypeName="DNNModel.ModuleControls"><MappingFragment StoreEntitySet="ModuleControls">
+            <ScalarProperty Name="ModuleControlID" ColumnName="ModuleControlID" />
+            <ScalarProperty Name="ModuleDefID" ColumnName="ModuleDefID" />
+            <ScalarProperty Name="ControlKey" ColumnName="ControlKey" />
+            <ScalarProperty Name="ControlTitle" ColumnName="ControlTitle" />
+            <ScalarProperty Name="ControlSrc" ColumnName="ControlSrc" />
+            <ScalarProperty Name="IconFile" ColumnName="IconFile" />
+            <ScalarProperty Name="ControlType" ColumnName="ControlType" />
+            <ScalarProperty Name="ViewOrder" ColumnName="ViewOrder" />
+            <ScalarProperty Name="HelpUrl" ColumnName="HelpUrl" />
+            <ScalarProperty Name="SupportsPartialRendering" ColumnName="SupportsPartialRendering" />
+            <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+            <ScalarProperty Name="CreatedOnDate" ColumnName="CreatedOnDate" />
+            <ScalarProperty Name="LastModifiedByUserID" ColumnName="LastModifiedByUserID" />
+            <ScalarProperty Name="LastModifiedOnDate" ColumnName="LastModifiedOnDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ModuleDefinitions"><EntityTypeMapping TypeName="DNNModel.ModuleDefinitions"><MappingFragment StoreEntitySet="ModuleDefinitions">
+            <ScalarProperty Name="ModuleDefID" ColumnName="ModuleDefID" />
+            <ScalarProperty Name="FriendlyName" ColumnName="FriendlyName" />
+            <ScalarProperty Name="DesktopModuleID" ColumnName="DesktopModuleID" />
+            <ScalarProperty Name="DefaultCacheTime" ColumnName="DefaultCacheTime" />
+            <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+            <ScalarProperty Name="CreatedOnDate" ColumnName="CreatedOnDate" />
+            <ScalarProperty Name="LastModifiedByUserID" ColumnName="LastModifiedByUserID" />
+            <ScalarProperty Name="LastModifiedOnDate" ColumnName="LastModifiedOnDate" />
+            <ScalarProperty Name="DefaultMinExecutionTime" ColumnName="DefaultMinExecutionTime" />
+            <ScalarProperty Name="DefaultMaxExecutionTime" ColumnName="DefaultMaxExecutionTime" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ModulePermission"><EntityTypeMapping TypeName="DNNModel.ModulePermission"><MappingFragment StoreEntitySet="ModulePermission">
+            <ScalarProperty Name="ModulePermissionID" ColumnName="ModulePermissionID" />
+            <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+            <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
+            <ScalarProperty Name="AllowAccess" ColumnName="AllowAccess" />
+            <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+            <ScalarProperty Name="UserID" ColumnName="UserID" />
+            <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+            <ScalarProperty Name="CreatedOnDate" ColumnName="CreatedOnDate" />
+            <ScalarProperty Name="LastModifiedByUserID" ColumnName="LastModifiedByUserID" />
+            <ScalarProperty Name="LastModifiedOnDate" ColumnName="LastModifiedOnDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Modules"><EntityTypeMapping TypeName="DNNModel.Modules"><MappingFragment StoreEntitySet="Modules">
+            <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+            <ScalarProperty Name="ModuleDefID" ColumnName="ModuleDefID" />
+            <ScalarProperty Name="AllTabs" ColumnName="AllTabs" />
+            <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+            <ScalarProperty Name="InheritViewPermissions" ColumnName="InheritViewPermissions" />
+            <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+            <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+            <ScalarProperty Name="PortalID" ColumnName="PortalID" />
+            <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+            <ScalarProperty Name="CreatedOnDate" ColumnName="CreatedOnDate" />
+            <ScalarProperty Name="LastModifiedByUserID" ColumnName="LastModifiedByUserID" />
+            <ScalarProperty Name="LastModifiedOnDate" ColumnName="LastModifiedOnDate" />
+            <ScalarProperty Name="ContentItemID" ColumnName="ContentItemID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ModuleSettings"><EntityTypeMapping TypeName="DNNModel.ModuleSettings"><MappingFragment StoreEntitySet="ModuleSettings">
+            <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+            <ScalarProperty Name="SettingName" ColumnName="SettingName" />
+            <ScalarProperty Name="SettingValue" ColumnName="SettingValue" />
+            <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+            <ScalarProperty Name="CreatedOnDate" ColumnName="CreatedOnDate" />
+            <ScalarProperty Name="LastModifiedByUserID" ColumnName="LastModifiedByUserID" />
+            <ScalarProperty Name="LastModifiedOnDate" ColumnName="LastModifiedOnDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PortalAlias"><EntityTypeMapping TypeName="DNNModel.PortalAlias"><MappingFragment StoreEntitySet="PortalAlias">
+            <ScalarProperty Name="PortalAliasID" ColumnName="PortalAliasID" />
+            <ScalarProperty Name="PortalID" ColumnName="PortalID" />
+            <ScalarProperty Name="HTTPAlias" ColumnName="HTTPAlias" />
+            <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+            <ScalarProperty Name="CreatedOnDate" ColumnName="CreatedOnDate" />
+            <ScalarProperty Name="LastModifiedByUserID" ColumnName="LastModifiedByUserID" />
+            <ScalarProperty Name="LastModifiedOnDate" ColumnName="LastModifiedOnDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Portals"><EntityTypeMapping TypeName="DNNModel.Portals"><MappingFragment StoreEntitySet="Portals">
+            <ScalarProperty Name="PortalID" ColumnName="PortalID" />
+            <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+            <ScalarProperty Name="UserRegistration" ColumnName="UserRegistration" />
+            <ScalarProperty Name="BannerAdvertising" ColumnName="BannerAdvertising" />
+            <ScalarProperty Name="AdministratorId" ColumnName="AdministratorId" />
+            <ScalarProperty Name="Currency" ColumnName="Currency" />
+            <ScalarProperty Name="HostFee" ColumnName="HostFee" />
+            <ScalarProperty Name="HostSpace" ColumnName="HostSpace" />
+            <ScalarProperty Name="AdministratorRoleId" ColumnName="AdministratorRoleId" />
+            <ScalarProperty Name="RegisteredRoleId" ColumnName="RegisteredRoleId" />
+            <ScalarProperty Name="GUID" ColumnName="GUID" />
+            <ScalarProperty Name="PaymentProcessor" ColumnName="PaymentProcessor" />
+            <ScalarProperty Name="ProcessorUserId" ColumnName="ProcessorUserId" />
+            <ScalarProperty Name="ProcessorPassword" ColumnName="ProcessorPassword" />
+            <ScalarProperty Name="SiteLogHistory" ColumnName="SiteLogHistory" />
+            <ScalarProperty Name="DefaultLanguage" ColumnName="DefaultLanguage" />
+            <ScalarProperty Name="TimezoneOffset" ColumnName="TimezoneOffset" />
+            <ScalarProperty Name="HomeDirectory" ColumnName="HomeDirectory" />
+            <ScalarProperty Name="PageQuota" ColumnName="PageQuota" />
+            <ScalarProperty Name="UserQuota" ColumnName="UserQuota" />
+            <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+            <ScalarProperty Name="CreatedOnDate" ColumnName="CreatedOnDate" />
+            <ScalarProperty Name="LastModifiedByUserID" ColumnName="LastModifiedByUserID" />
+            <ScalarProperty Name="LastModifiedOnDate" ColumnName="LastModifiedOnDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PortalSettings"><EntityTypeMapping TypeName="DNNModel.PortalSettings"><MappingFragment StoreEntitySet="PortalSettings">
+            <ScalarProperty Name="PortalID" ColumnName="PortalID" />
+            <ScalarProperty Name="SettingName" ColumnName="SettingName" />
+            <ScalarProperty Name="SettingValue" ColumnName="SettingValue" />
+            <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+            <ScalarProperty Name="CreatedOnDate" ColumnName="CreatedOnDate" />
+            <ScalarProperty Name="LastModifiedByUserID" ColumnName="LastModifiedByUserID" />
+            <ScalarProperty Name="LastModifiedOnDate" ColumnName="LastModifiedOnDate" />
+            <ScalarProperty Name="CultureCode" ColumnName="CultureCode" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TabModules"><EntityTypeMapping TypeName="DNNModel.TabModules"><MappingFragment StoreEntitySet="TabModules">
+            <ScalarProperty Name="TabModuleID" ColumnName="TabModuleID" />
+            <ScalarProperty Name="TabID" ColumnName="TabID" />
+            <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+            <ScalarProperty Name="PaneName" ColumnName="PaneName" />
+            <ScalarProperty Name="ModuleOrder" ColumnName="ModuleOrder" />
+            <ScalarProperty Name="CacheTime" ColumnName="CacheTime" />
+            <ScalarProperty Name="Alignment" ColumnName="Alignment" />
+            <ScalarProperty Name="Color" ColumnName="Color" />
+            <ScalarProperty Name="Border" ColumnName="Border" />
+            <ScalarProperty Name="IconFile" ColumnName="IconFile" />
+            <ScalarProperty Name="Visibility" ColumnName="Visibility" />
+            <ScalarProperty Name="ContainerSrc" ColumnName="ContainerSrc" />
+            <ScalarProperty Name="DisplayTitle" ColumnName="DisplayTitle" />
+            <ScalarProperty Name="DisplayPrint" ColumnName="DisplayPrint" />
+            <ScalarProperty Name="DisplaySyndicate" ColumnName="DisplaySyndicate" />
+            <ScalarProperty Name="IsWebSlice" ColumnName="IsWebSlice" />
+            <ScalarProperty Name="WebSliceTitle" ColumnName="WebSliceTitle" />
+            <ScalarProperty Name="WebSliceExpiryDate" ColumnName="WebSliceExpiryDate" />
+            <ScalarProperty Name="WebSliceTTL" ColumnName="WebSliceTTL" />
+            <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+            <ScalarProperty Name="CreatedOnDate" ColumnName="CreatedOnDate" />
+            <ScalarProperty Name="LastModifiedByUserID" ColumnName="LastModifiedByUserID" />
+            <ScalarProperty Name="LastModifiedOnDate" ColumnName="LastModifiedOnDate" />
+            <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+            <ScalarProperty Name="CacheMethod" ColumnName="CacheMethod" />
+            <ScalarProperty Name="ModuleTitle" ColumnName="ModuleTitle" />
+            <ScalarProperty Name="Header" ColumnName="Header" />
+            <ScalarProperty Name="Footer" ColumnName="Footer" />
+            <ScalarProperty Name="CultureCode" ColumnName="CultureCode" />
+            <ScalarProperty Name="UniqueId" ColumnName="UniqueId" />
+            <ScalarProperty Name="VersionGuid" ColumnName="VersionGuid" />
+            <ScalarProperty Name="DefaultLanguageGuid" ColumnName="DefaultLanguageGuid" />
+            <ScalarProperty Name="LocalizedVersionGuid" ColumnName="LocalizedVersionGuid" />
+            <ScalarProperty Name="MinExecutionTime" ColumnName="MinExecutionTime" />
+            <ScalarProperty Name="MaxExecutionTime" ColumnName="MaxExecutionTime" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TabModuleSettings"><EntityTypeMapping TypeName="DNNModel.TabModuleSettings"><MappingFragment StoreEntitySet="TabModuleSettings">
+            <ScalarProperty Name="TabModuleID" ColumnName="TabModuleID" />
+            <ScalarProperty Name="SettingName" ColumnName="SettingName" />
+            <ScalarProperty Name="SettingValue" ColumnName="SettingValue" />
+            <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+            <ScalarProperty Name="CreatedOnDate" ColumnName="CreatedOnDate" />
+            <ScalarProperty Name="LastModifiedByUserID" ColumnName="LastModifiedByUserID" />
+            <ScalarProperty Name="LastModifiedOnDate" ColumnName="LastModifiedOnDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TabPermission"><EntityTypeMapping TypeName="DNNModel.TabPermission"><MappingFragment StoreEntitySet="TabPermission">
+            <ScalarProperty Name="TabPermissionID" ColumnName="TabPermissionID" />
+            <ScalarProperty Name="TabID" ColumnName="TabID" />
+            <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
+            <ScalarProperty Name="AllowAccess" ColumnName="AllowAccess" />
+            <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+            <ScalarProperty Name="UserID" ColumnName="UserID" />
+            <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+            <ScalarProperty Name="CreatedOnDate" ColumnName="CreatedOnDate" />
+            <ScalarProperty Name="LastModifiedByUserID" ColumnName="LastModifiedByUserID" />
+            <ScalarProperty Name="LastModifiedOnDate" ColumnName="LastModifiedOnDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Tabs"><EntityTypeMapping TypeName="DNNModel.Tabs"><MappingFragment StoreEntitySet="Tabs">
+            <ScalarProperty Name="TabID" ColumnName="TabID" />
+            <ScalarProperty Name="TabOrder" ColumnName="TabOrder" />
+            <ScalarProperty Name="PortalID" ColumnName="PortalID" />
+            <ScalarProperty Name="TabName" ColumnName="TabName" />
+            <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+            <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+            <ScalarProperty Name="Level" ColumnName="Level" />
+            <ScalarProperty Name="IconFile" ColumnName="IconFile" />
+            <ScalarProperty Name="DisableLink" ColumnName="DisableLink" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="KeyWords" ColumnName="KeyWords" />
+            <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+            <ScalarProperty Name="Url" ColumnName="Url" />
+            <ScalarProperty Name="SkinSrc" ColumnName="SkinSrc" />
+            <ScalarProperty Name="ContainerSrc" ColumnName="ContainerSrc" />
+            <ScalarProperty Name="TabPath" ColumnName="TabPath" />
+            <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+            <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+            <ScalarProperty Name="RefreshInterval" ColumnName="RefreshInterval" />
+            <ScalarProperty Name="PageHeadText" ColumnName="PageHeadText" />
+            <ScalarProperty Name="IsSecure" ColumnName="IsSecure" />
+            <ScalarProperty Name="PermanentRedirect" ColumnName="PermanentRedirect" />
+            <ScalarProperty Name="SiteMapPriority" ColumnName="SiteMapPriority" />
+            <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+            <ScalarProperty Name="CreatedOnDate" ColumnName="CreatedOnDate" />
+            <ScalarProperty Name="LastModifiedByUserID" ColumnName="LastModifiedByUserID" />
+            <ScalarProperty Name="LastModifiedOnDate" ColumnName="LastModifiedOnDate" />
+            <ScalarProperty Name="IconFileLarge" ColumnName="IconFileLarge" />
+            <ScalarProperty Name="CultureCode" ColumnName="CultureCode" />
+            <ScalarProperty Name="ContentItemID" ColumnName="ContentItemID" />
+            <ScalarProperty Name="UniqueId" ColumnName="UniqueId" />
+            <ScalarProperty Name="VersionGuid" ColumnName="VersionGuid" />
+            <ScalarProperty Name="DefaultLanguageGuid" ColumnName="DefaultLanguageGuid" />
+            <ScalarProperty Name="LocalizedVersionGuid" ColumnName="LocalizedVersionGuid" />
+            <ScalarProperty Name="TemplateCacheDuration" ColumnName="TemplateCacheDuration" />
+            <ScalarProperty Name="MaxModuleLoadTime" ColumnName="MaxModuleLoadTime" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TabSettings"><EntityTypeMapping TypeName="DNNModel.TabSettings"><MappingFragment StoreEntitySet="TabSettings">
+            <ScalarProperty Name="TabID" ColumnName="TabID" />
+            <ScalarProperty Name="SettingName" ColumnName="SettingName" />
+            <ScalarProperty Name="SettingValue" ColumnName="SettingValue" />
+            <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+            <ScalarProperty Name="CreatedOnDate" ColumnName="CreatedOnDate" />
+            <ScalarProperty Name="LastModifiedByUserID" ColumnName="LastModifiedByUserID" />
+            <ScalarProperty Name="LastModifiedOnDate" ColumnName="LastModifiedOnDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="DNNEntities">
+        <EntityTypeShape EntityType="DNNModel.DesktopModulePermission" Width="1.5" PointX="0.75" PointY="0.75" Height="2.9417936197916665" IsExpanded="true" />
+        <EntityTypeShape EntityType="DNNModel.DesktopModules" Width="1.5" PointX="1.5" PointY="9.25" Height="4.6725065104166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="DNNModel.ModuleControls" Width="1.5" PointX="6" PointY="9.625" Height="3.9033007812499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="DNNModel.ModuleDefinitions" Width="1.5" PointX="3.75" PointY="9.875" Height="3.5186979166666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="DNNModel.ModulePermission" Width="1.5" PointX="8.25" PointY="15.375" Height="3.1340950520833317" IsExpanded="true" />
+        <EntityTypeShape EntityType="DNNModel.Modules" Width="1.5" PointX="6" PointY="16.375" Height="4.4802050781250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="DNNModel.ModuleSettings" Width="1.5" PointX="8.25" PointY="19.25" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="DNNModel.PortalAlias" Width="1.5" PointX="3" PointY="17.75" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="DNNModel.Portals" Width="1.5" PointX="0.75" PointY="15.375" Height="6.4032194010416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="DNNModel.PortalSettings" Width="1.5" PointX="3" PointY="21.125" Height="2.7494921875000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="DNNModel.TabModules" Width="1.5" PointX="8.25" PointY="23" Height="8.3262337239583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="DNNModel.TabModuleSettings" Width="1.5" PointX="10.5" PointY="25.875" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="DNNModel.TabPermission" Width="1.5" PointX="5.25" PointY="26" Height="3.1340950520833388" IsExpanded="true" />
+        <EntityTypeShape EntityType="DNNModel.Tabs" Width="1.5" PointX="3" PointY="24.625" Height="9.2877408854166639" IsExpanded="true" />
+        <EntityTypeShape EntityType="DNNModel.TabSettings" Width="1.5" PointX="5.25" PointY="29.875" Height="2.5571907552083353" IsExpanded="true" />
+        <AssociationConnector Association="DNNModel.FK_ModuleDefinitions_DesktopModules" ManuallyRouted="false">
+          <ConnectorPoint PointX="3" PointY="11.634348958333334" />
+          <ConnectorPoint PointX="3.75" PointY="11.634348958333334" />
+        </AssociationConnector>
+        <AssociationConnector Association="DNNModel.FK_ModuleControls_ModuleDefinitions" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.25" PointY="11.634348958333334" />
+          <ConnectorPoint PointX="6" PointY="11.634348958333334" />
+        </AssociationConnector>
+        <AssociationConnector Association="DNNModel.FK_Modules_ModuleDefinitions" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.90625" PointY="13.393697916666667" />
+          <ConnectorPoint PointX="4.90625" PointY="17.03125" />
+          <ConnectorPoint PointX="6" PointY="17.03125" />
+        </AssociationConnector>
+        <AssociationConnector Association="DNNModel.FK_ModulePermission_Modules" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.5" PointY="17.442047526041666" />
+          <ConnectorPoint PointX="8.25" PointY="17.442047526041666" />
+        </AssociationConnector>
+        <AssociationConnector Association="DNNModel.FK_Modules_Portals" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="17.421875" />
+          <ConnectorPoint PointX="6" PointY="17.421875" />
+        </AssociationConnector>
+        <AssociationConnector Association="DNNModel.FK_ModuleSettings_Modules" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.5" PointY="20.0526025390625" />
+          <ConnectorPoint PointX="8.25" PointY="20.0526025390625" />
+        </AssociationConnector>
+        <AssociationConnector Association="DNNModel.FK_TabModules_Modules" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.15625" PointY="20.855205078125003" />
+          <ConnectorPoint PointX="7.15625" PointY="24.46875" />
+          <ConnectorPoint PointX="8.25" PointY="24.46875" />
+        </AssociationConnector>
+        <AssociationConnector Association="DNNModel.FK_PortalAlias_Portals" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="19.028595377604166" />
+          <ConnectorPoint PointX="3" PointY="19.028595377604166" />
+        </AssociationConnector>
+        <AssociationConnector Association="DNNModel.FK_PortalSettings_Portals" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="21.451609700520834" />
+          <ConnectorPoint PointX="3" PointY="21.451609700520834" />
+        </AssociationConnector>
+        <AssociationConnector Association="DNNModel.FK_Tabs_Portals" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="21.778219401041667" />
+          <ConnectorPoint PointX="1.5" PointY="29.268870442708334" />
+          <ConnectorPoint PointX="3" PointY="29.268870442708334" />
+        </AssociationConnector>
+        <AssociationConnector Association="DNNModel.FK_TabModules_Tabs" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="25.28125" />
+          <ConnectorPoint PointX="8.25" PointY="25.28125" />
+        </AssociationConnector>
+        <AssociationConnector Association="DNNModel.FK_TabModuleSettings_TabModules" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.75" PointY="27.153595377604166" />
+          <ConnectorPoint PointX="10.5" PointY="27.153595377604166" />
+        </AssociationConnector>
+        <AssociationConnector Association="DNNModel.FK_TabPermission_Tabs" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="27.567047526041669" />
+          <ConnectorPoint PointX="5.25" PointY="27.567047526041669" />
+        </AssociationConnector>
+        <AssociationConnector Association="DNNModel.FK_Tabs_Tabs" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.5319230769230767" PointY="33.912740885416667" />
+          <ConnectorPoint PointX="3.5319230769230767" PointY="34.162740885416667" />
+          <ConnectorPoint PointX="3.9784615384615383" PointY="34.162740885416667" />
+          <ConnectorPoint PointX="3.9784615384615383" PointY="33.912740885416667" />
+        </AssociationConnector>
+        <AssociationConnector Association="DNNModel.FK_TabSettings_Tabs" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="31.153595377604169" />
+          <ConnectorPoint PointX="5.25" PointY="31.153595377604169" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

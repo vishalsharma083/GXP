@@ -16,7 +16,7 @@ namespace WebApp
         public void ProcessRequest(HttpContext context)
         {
             PagePublisher publisher = new PagePublisher();
-            publisher.Publish(Utility.ConstructPagePublisherInput(new HttpContextWrapper(context)));
+            publisher.Publish(PagePublisherUtility.ConstructPagePublisherInput(new HttpContextWrapper(context)));
         }
 
         public bool IsReusable

@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using GXP.Core.Utility;
+using System.Text.RegularExpressions;
 
 namespace GXP.Core.Framework
 {
     public class PagePublisher
     {
+        private static Regex RemoveRunAtServerVisibleAndControlAttribute = new Regex("(?<runat>(runat=\"server\"))|(?<visible>(visible=\"false\"))|(?<controltag><%.*%>)",RegexOptions.Compiled);
+        private const string FindPaneRegex = "<td.*id=\"{0}\"([^>]*)>";
+
         private PagePublisherInput _input = null;
         public PageRequestValidationResult IsValidRequest()
         {
@@ -21,7 +26,9 @@ namespace GXP.Core.Framework
             if (IsValidRequest().IsValid)
             {
                 string xslt = PrepareXSLT();
-                input_.CurrentContext.Response.Write(DoTransformation(xslt));
+                result.ResponseText = DoTransformation(xslt);
+                DoDKIParsing(result);
+                input_.CurrentContext.Response.Write(result.ResponseText);
                 DoHttpCacheSettings(input_);
                 result.Status = PublishStatus.SUCCESS;
             }
@@ -30,6 +37,11 @@ namespace GXP.Core.Framework
                 throw new NotImplementedException("Publish.if.else");
             }
             throw new NotImplementedException("Publish");
+        }
+
+        private void DoDKIParsing(PagePublisherResult result)
+        {
+            throw new NotImplementedException();
         }
 
         private void DoHttpCacheSettings(PagePublisherInput input_)
@@ -44,9 +56,14 @@ namespace GXP.Core.Framework
             return cmsXsltUtility.PerformTransformation(xslt_, "<root/>", true);
         }
 
+
         private string PrepareXSLT()
         {
-            // Load view mode module content to be inject into skeleton.
+            string skin = PagePublisherUtility.GetAllFileContent(_input.ActiveTab.SkinSrc);
+
+            skin = RemoveRunAtServerVisibleAndControlAttribute.Replace(skin, string.Empty);
+            
+
             throw new NotImplementedException("PrepareXSLT");
         }
     }

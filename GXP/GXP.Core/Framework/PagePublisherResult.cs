@@ -7,7 +7,7 @@ namespace GXP.Core.Framework
 {
     public class PagePublisherResult
     {
-        public string Response { get; set; }
+        public string ResponseText { get; set; }
         public PublishStatus Status { get; set; }
     }
 }

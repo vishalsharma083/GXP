@@ -59,9 +59,9 @@ namespace GXP.Core.Framework
             return output;
         }
 
-        public string GetViewModeModuleContent(int tabid_, int moduleId_)
+        public string GetContent(int tabid_, int moduleId_)
         {
-            throw new NotImplementedException();
+            return ModuleParsingManager.GenerateContent(Utility.PagePublisherUtility.GetViewModeModuleContent(string.Empty)); // TODO : To pass actual value.
         }
     }
 }
