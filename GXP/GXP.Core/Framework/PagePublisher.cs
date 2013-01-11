@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using GXP.Core.Utility;
 using System.Text.RegularExpressions;
+using GXP.Core.DNNEntities;
+using System.Configuration;
+using System.Net;
 
 namespace GXP.Core.Framework
 {
@@ -15,8 +18,7 @@ namespace GXP.Core.Framework
         private PagePublisherInput _input = null;
         public PageRequestValidationResult IsValidRequest()
         {
-            // TODO : validate request against each validation logic.
-            throw new NotImplementedException("IsValidRequest");
+            return RequestValidator.IsValidRequest(_input);
         }
 
         public PagePublisherResult Publish(PagePublisherInput input_)
@@ -36,17 +38,17 @@ namespace GXP.Core.Framework
             {
                 throw new NotImplementedException("Publish.if.else");
             }
-            throw new NotImplementedException("Publish");
+            return result;
         }
 
         private void DoDKIParsing(PagePublisherResult result)
         {
-            throw new NotImplementedException();
+            return; //TODO:
         }
 
         private void DoHttpCacheSettings(PagePublisherInput input_)
         {
-            throw new NotImplementedException("DoHttpCacheSettings");
+            return; // TODO:
         }
 
         private string DoTransformation(string xslt_)
@@ -59,12 +61,45 @@ namespace GXP.Core.Framework
 
         private string PrepareXSLT()
         {
-            string skin = PagePublisherUtility.GetAllFileContent(_input.ActiveTab.SkinSrc);
+            string skin = PagePublisherUtility.GetAllFileContent(ConfigurationManager.AppSettings["PortalFolderPath"] + "\\" + _input.ActiveTab.SkinSrc);
 
             skin = RemoveRunAtServerVisibleAndControlAttribute.Replace(skin, string.Empty);
-            
 
-            throw new NotImplementedException("PrepareXSLT");
+            List<TabModules> tabModules = DependencyManager.DBService.GetAllTabModules(_input.ActiveTab.TabID);
+
+            var groupData = tabModules.GroupBy(x => x.PaneName).ToDictionary(x => x.Key, y => y);
+
+            foreach (var item in groupData)
+            {
+                foreach (var item2 in item.Value)
+                {
+                    Console.Out.WriteLine(item2.TabModuleID + " : " + item2.PaneName);
+                }
+            }
+
+            string lineWithPaneId = string.Empty;
+            StringBuilder temp = new StringBuilder();
+            Regex regex = null;
+            Match match = null;
+            foreach (var item in groupData)
+            {
+                regex = new Regex(string.Format(FindPaneRegex, item.Key));
+                match = regex.Match(skin);
+                if (match.Success)
+                {
+                    lineWithPaneId = match.Value.ToString();
+                    temp.Append(lineWithPaneId);
+                    foreach (var module in item.Value)
+                    {
+                        temp.Append("<xsl:value-of select=\"CMSXsltUtility:GetContent('" + module.TabID + "','" + module.ModuleID + "')/Content\"></xsl:value-of>");
+                    }
+                }
+                skin = skin.Replace(lineWithPaneId, temp.ToString());
+                temp.Length = 0;
+            }
+
+            // http://msdn.microsoft.com/en-us/library/ee388354(v=vs.100).aspx
+            return WebUtility.HtmlDecode(skin);
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GXP.Core.GCMSEntities
 {
-    class RSSInfo
+    public class RSSInfo
     {
     }
 }

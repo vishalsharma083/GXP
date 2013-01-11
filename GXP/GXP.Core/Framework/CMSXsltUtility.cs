@@ -6,6 +6,8 @@ using System.Xml.Xsl;
 using System.IO;
 using System.Xml;
 using System.Xml.XPath;
+using System.Configuration;
+using System.Net;
 
 namespace GXP.Core.Framework
 {
@@ -17,11 +19,12 @@ namespace GXP.Core.Framework
         {
             string output = string.Empty;
             StringBuilder builder = new StringBuilder();
-            string inputText = "<xsl:transform version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\" xmlns:CMSXsltUtility=\"urn:CMSXsltUtility\" xmlns:GeoLocation=\"urn:GeoLocation\"><xsl:output method=\"html\" omit-xml-declaration=\"yes\" /><xsl:template match=\"/\">";
+            string inputText = "<xsl:transform version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\" xmlns:CMSXsltUtility=\"urn:CMSXsltUtility\"><xsl:output method=\"html\" omit-xml-declaration=\"yes\" /><xsl:template match=\"/\">";
             XslCompiledTransform xslt = new XslCompiledTransform();
             XsltArgumentList xslArgs = new XsltArgumentList();
             try
             {
+
                 //pass an instance of the custom object
                 xslArgs.AddExtensionObject("urn:CMSXsltUtility", this);
                 inputText = inputText + xsltInput.Trim() + "</xsl:template></xsl:transform>";
@@ -43,7 +46,7 @@ namespace GXP.Core.Framework
                         {
                             xPathDoc = new XPathDocument(stringReader);
                             xslt.Transform(xPathDoc, xslArgs, writer);
-                            output = builder.ToString().Replace(" xmlns:CMSXsltUtility=\"urn:CMSXsltUtility\" xmlns:GeoLocation=\"urn:GeoLocation\"", string.Empty);
+                            output = builder.ToString().Replace(" xmlns:CMSXsltUtility=\"urn:CMSXsltUtility\"", string.Empty);
                         }
                     }
                 }
@@ -56,12 +59,29 @@ namespace GXP.Core.Framework
                     output = xsltInput + "</br> <b>Error while xslt Transformation </b>: " + ex.ToString();
                 }
             }
-            return output;
+            return WebUtility.HtmlDecode(output);
         }
 
-        public string GetContent(int tabid_, int moduleId_)
+        public XPathNavigator GetContent(int tabid_, int moduleId_)
         {
-            return ModuleParsingManager.GenerateContent(Utility.PagePublisherUtility.GetViewModeModuleContent(string.Empty)); // TODO : To pass actual value.
+            string filePath = string.Format(@"{0}\{1}\{2}\publish\default.gtxt", ConfigurationManager.AppSettings["DataStorePath"], tabid_, moduleId_);
+            string content = ModuleParsingManager.GenerateContent(Utility.PagePublisherUtility.GetViewModeModuleContent(filePath));
+            XmlDocument xdoc = new XmlDocument();
+            if (string.IsNullOrEmpty(content) == false)
+            {
+                xdoc.LoadXml("<Content><![CDATA[" + content + "]]></Content>");
+            }
+            else
+            {
+                xdoc.LoadXml(GetEmptyContent());
+            }
+
+            return xdoc.CreateNavigator();
+        }
+
+        private string GetEmptyContent()
+        {
+            return "<root><noelement></noelement></root>";
         }
     }
 }

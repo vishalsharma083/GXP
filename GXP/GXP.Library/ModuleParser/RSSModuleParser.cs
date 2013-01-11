@@ -3,20 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using GXP.Core.Interfaces;
+using GXP.Core.Framework;
 
 namespace GXP.Dep.ModuleParsers
 {
-    public class RSSModuleParser : IModuleParser
+    public class RSSModuleParser : BaseModuleParser
     {
 
-        public bool CanParse(string moduleXml_)
+        public override bool CanParse()
         {
-            throw new NotImplementedException();
+            return ModuleXml.Contains("RSSInfo");
+
         }
 
-        public string GenerateContent(string moduleXml_)
+        public override string GenerateContent()
         {
-            throw new NotImplementedException();
+            return string.Empty;
         }
     }
 }

@@ -56,6 +56,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Modules\CMSGrid.ascx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -116,6 +117,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Modules\CMSGrid.ascx.cs">
+      <DependentUpon>CMSGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\CMSGrid.ascx.designer.cs">
+      <DependentUpon>CMSGrid.ascx</DependentUpon>
+    </Compile>
     <Compile Include="PageRequestHandler.ashx.cs">
       <DependentUpon>PageRequestHandler.ashx</DependentUpon>
     </Compile>
@@ -147,6 +155,16 @@
       <Project>{C9676DD0-40C4-46E6-9FCF-CA1AAEACBA31}</Project>
       <Name>GXP.Library</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\Airlines.Config" />
+    <Content Include="Config\CMSPortal.config" />
+    <Content Include="Config\Competitors.Config" />
+    <Content Include="Config\PageTrackingSettings.config" />
+    <Content Include="Config\SlangWords.Config" />
+    <Content Include="Config\SQLDKI.config" />
+    <Content Include="Config\sqlmodule.config" />
+    <Content Include="Config\XSLTProcedures.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

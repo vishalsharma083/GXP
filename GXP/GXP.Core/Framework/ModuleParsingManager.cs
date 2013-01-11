@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using GXP.Core.Interfaces;
 using System.Reflection;
+using System.IO;
 
 namespace GXP.Core.Framework
 {
@@ -23,7 +24,9 @@ namespace GXP.Core.Framework
                 var type = typeof(IModuleParser);
 
                 _moduleParsers = new List<IModuleParser>();
-                System.Reflection.Assembly assem = Assembly.Load("GXP.Library"); // TODO : Hard coding to be removed.
+
+                Assembly assem = null;
+                assem = Assembly.Load("GXP.Library");
                 foreach (Type t in assem.GetTypes())
                 {
                     if (type.IsAssignableFrom(t) && type.Name != t.Name)
@@ -31,9 +34,7 @@ namespace GXP.Core.Framework
                         _moduleParsers.Add(Activator.CreateInstance("GXP.Library", t.FullName).Unwrap() as IModuleParser);
                     }
                 }
-                _moduleParsers.Sort();
                 DependencyManager.CachingService.Insert(cacheKey, _moduleParsers, DateTime.Now.AddMinutes(60));
-
             }
         }
 
@@ -42,9 +43,10 @@ namespace GXP.Core.Framework
             string generatedHTML = string.Empty;
             foreach (var item in _moduleParsers)
             {
-                if (item.CanParse(p))
+                item.ModuleXml = p;
+                if (item.CanParse())
                 {
-                    generatedHTML  = item.GenerateContent(p);
+                    generatedHTML  = item.GenerateContent();
                     break;
                 }
             }

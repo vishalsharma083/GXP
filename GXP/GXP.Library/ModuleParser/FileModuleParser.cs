@@ -3,20 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using GXP.Core.Interfaces;
-
+using GXP.Core.Utility;
+using GXP.Core.GCMSEntities;
+using System.IO;
+using GXP.Core.Framework;
 namespace GXP.Dep.ModuleParsers
 {
-    public class FileModuleParser : IModuleParser
+    public class FileModuleParser : BaseModuleParser
     {
 
-        public bool CanParse(string moduleXml_)
+        public override bool CanParse()
         {
-            throw new NotImplementedException();
+            return ModuleXml.Contains("CMSFileInfo");
         }
 
-        public string GenerateContent(string moduleXml_)
+        public override string GenerateContent()
         {
-            throw new NotImplementedException();
+            CMSFileInfo fileInfo = PagePublisherUtility.DeserializeObject<CMSFileInfo>(ModuleXml);
+            if (fileInfo != null && File.Exists(fileInfo.FilePathWithName))
+            {
+                return File.ReadAllText(fileInfo.FilePathWithName);
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
+
+        
     }
 }

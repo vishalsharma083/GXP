@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GXP.Core.GCMSEntities
 {
-    class UserReviewListingInfo
+    public class UserReviewListingInfo
     {
     }
 }

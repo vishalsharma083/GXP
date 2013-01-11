@@ -8,8 +8,8 @@
     <ProjectGuid>{C9676DD0-40C4-46E6-9FCF-CA1AAEACBA31}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GXP.Dep</RootNamespace>
-    <AssemblyName>GXP.Dep</AssemblyName>
+    <RootNamespace>GXP.Library</RootNamespace>
+    <AssemblyName>GXP.Library</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,11 +31,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ApplicationBlocks.Data">
+      <HintPath>..\Assemblies\DataAccessBlock\lib\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Entity.Design" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,12 +51,14 @@
     <Compile Include="ModuleParser\ExcelModuleParser.cs" />
     <Compile Include="ModuleParser\FileModuleParser.cs" />
     <Compile Include="ModuleParser\HTMLModuleParser.cs" />
+    <Compile Include="ModuleParser\ResourceCombinerParser.cs" />
     <Compile Include="ModuleParser\RSSModuleParser.cs" />
     <Compile Include="ModuleParser\SQLModuleParser.cs" />
     <Compile Include="Service\ASPNetCachingService.cs" />
     <Compile Include="Service\FileLoggingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\SQLHelper.cs" />
+    <Compile Include="UI\CMSRepeater.cs" />
     <Compile Include="Validation\IsValidExtension.cs" />
   </ItemGroup>
   <ItemGroup>
