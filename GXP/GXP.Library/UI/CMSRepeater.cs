@@ -6,13 +6,19 @@ using System.Data;
 using System.Web.UI.WebControls;
 using System.Xml;
 using System.Web.UI;
-
+using System.IO;
+using GXP.Core.Framework;
 namespace GXP.Library.UI
 {
     public class CMSRepeater : Repeater
     {
         public void Init()
         {
+            this.ItemTemplate = new MyTemplate("ltlItemTemplate");
+            this.AlternatingItemTemplate = new MyTemplate("ltlAlternateItemTemplate");
+            this.HeaderTemplate = new MyTemplate("ltlHeaderTemplate");
+            this.FooterTemplate = new MyTemplate("ltlFooterTemplate");
+
             if (SourceData is DataTable)
             {
                 this.ItemDataBound += new RepeaterItemEventHandler(rptData1_ItemDataBound);
@@ -27,11 +33,19 @@ namespace GXP.Library.UI
         {
             this.DataSource = SourceData;
             this.DataBind();
-        }
+        } 
 
         public void Render()
         {
-            GeneratedContent = string.Empty; // TODO;
+
+            using (StringWriter swriter  = new StringWriter())
+            {
+                using (HtmlTextWriter hwriter = new HtmlTextWriter(swriter))
+                {
+                    this.Render(hwriter);
+                }
+                this.GeneratedContent = swriter.ToString();
+            }
         }
 
         protected void rptData1_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -77,7 +91,7 @@ namespace GXP.Library.UI
         private string ReplaceKeywords(string content_, int index_)
         {
             DataTable table = (DataTable)SourceData;
-            //content_ = GlobalCMS.Framework.DKIController.DoDKI(content_, table.Rows[index_]); // TODO:
+            content_ = DKIController.DoDKI(content_, table.Rows[index_]);
             return content_;
         }
         private string ReplaceKeywordsFromXMlNode(string content_, object item)
@@ -96,5 +110,21 @@ namespace GXP.Library.UI
         public string CMSFooterTemplate { get; set; }
         public object SourceData { get; set; }
         public string GeneratedContent { get; set; }  
+    }
+
+    // C#
+    class MyTemplate : ITemplate
+    {
+        public MyTemplate(string literalId_)
+        {
+            Id = literalId_;
+        }
+        public void InstantiateIn(System.Web.UI.Control container)
+        {
+            Literal lc = new Literal();
+            lc.ID = Id;
+            container.Controls.Add(lc);
+        }
+        public string Id { get; set; }
     }
 }

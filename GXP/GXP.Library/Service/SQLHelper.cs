@@ -6,6 +6,9 @@ using GXP.Core.Interfaces;
 using System.Data.Linq;
 using GXP.Core.DNNEntities;
 using GXP.Core;
+using System.Data;
+using Microsoft.ApplicationBlocks.Data;
+using System.Configuration;
 namespace GXP.Dep
 {
     public class SQLHelper : IDBService
@@ -15,6 +18,7 @@ namespace GXP.Dep
         private const string PORTALS_KEY = "PORTALS";
         private const string PORTAL_ALIAS_KEY = "PORTAL_ALIAS";
         private const string PORTAL_SETTINGS_KEY = "PORTAL_SETTINGS";
+        private const string BASE_DATA = "BaseData";
 
         public List<Tabs> GetAllTabsByPortalId(int portalId_)
         {
@@ -84,6 +88,30 @@ namespace GXP.Dep
                 }
             }
             return portalSettings;
+        }
+
+
+        public System.Data.DataSet LoadBaseData()
+        {
+            DataSet baseData = DependencyManager.CachingService.Get(BASE_DATA) as DataSet;
+            if (baseData != null)
+            {
+                return baseData;
+            }
+
+            baseData = SqlHelper.ExecuteDataset(ConfigurationManager.ConnectionStrings["GCMS-ConnectionString-1"].ConnectionString, "usp_GCMSBaseDataGet", null);
+            baseData.Tables[0].TableName = "CityLocations";
+            baseData.Tables[1].TableName = "AirportLocations";
+            baseData.Tables[2].TableName = "RegionLocations";
+            baseData.Tables[3].TableName = "CMSGenericPageList";
+            baseData.Tables[4].TableName = "CarVendor";
+            baseData.Tables[5].TableName = "AirlineDetails";
+            baseData.Tables[6].TableName = "StateLocations";
+            baseData.Tables[7].TableName = "CountryLocations";
+
+            DependencyManager.CachingService.Insert(BASE_DATA, baseData, DateTime.Now.AddHours(24));
+
+            return baseData;
         }
     }
 }

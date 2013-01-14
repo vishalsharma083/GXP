@@ -65,7 +65,7 @@ namespace GXP.Core.Framework
         public XPathNavigator GetContent(int tabid_, int moduleId_)
         {
             string filePath = string.Format(@"{0}\{1}\{2}\publish\default.gtxt", ConfigurationManager.AppSettings["DataStorePath"], tabid_, moduleId_);
-            string content = ModuleParsingManager.GenerateContent(Utility.PagePublisherUtility.GetViewModeModuleContent(filePath));
+            string content = ModuleParsingManager.GenerateContent(Utility.PagePublisherUtility.GetViewModeModuleContent(filePath),PublishingDetail);
             XmlDocument xdoc = new XmlDocument();
             if (string.IsNullOrEmpty(content) == false)
             {

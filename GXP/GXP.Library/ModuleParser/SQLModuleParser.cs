@@ -15,6 +15,7 @@ using Microsoft.ApplicationBlocks.Data;
 using GXP.Core;
 using System.Web.UI.WebControls;
 using GXP.Library.UI;
+using System.Reflection;
 namespace GXP.Dep.ModuleParsers
 {
     public class SQLModuleParser : BaseModuleParser
@@ -22,7 +23,8 @@ namespace GXP.Dep.ModuleParsers
         private static ProcedureSetting _procSettings = null;
         static SQLModuleParser()
         {
-            _procSettings = PagePublisherUtility.DeserializeObject<ProcedureSetting>(File.ReadAllText(@"/config/sqlmodule.config"));
+            string assemblyFullPath = Assembly.GetExecutingAssembly().Location.ToLower();
+            _procSettings = PagePublisherUtility.DeserializeObject<ProcedureSetting>(File.ReadAllText(assemblyFullPath.Replace(@"\bin\debug", string.Empty).Replace(Assembly.GetExecutingAssembly().ManifestModule.Name.ToLower(), string.Empty) + @"/config/sqlmodule.config"));
         }
         public override bool CanParse()
         {
@@ -46,6 +48,7 @@ namespace GXP.Dep.ModuleParsers
             if (dt != null && dt.Rows.Count > 0)
             {
                 CMSRepeater repeater = new CMSRepeater();
+                repeater.SourceData = dt;
                 repeater.CMSItemTemplate = moduleInfo.ItemTemplate.Data;
                 repeater.CMSAlternateItemTemplate = moduleInfo.AlternateItemTemplate.Data;
                 repeater.CMSHeaderTemplate = moduleInfo.HeaderTemplate.Data;
@@ -84,7 +87,7 @@ namespace GXP.Dep.ModuleParsers
                         }
                         if (inputParams.KeyName != null && inputParams.KeyName.ToLower().Trim() != "null")
                         {
-                            values[valCount] = base.PublisherInput.CurrentContext.Request.QueryString[inputParams.KeyName] != null ? base.PublisherInput.CurrentContext.Request.QueryString[inputParams.KeyName].Trim().Replace("-", " ") : /*DKIController.DoDKI(inputParams.KeyName.ToString().Trim(), ref cmsPageContext)*/ string.Empty; // TODO;
+                            values[valCount] = base.PublisherInput.CurrentContext.Request.QueryString[inputParams.KeyName] != null ? base.PublisherInput.CurrentContext.Request.QueryString[inputParams.KeyName].Trim().Replace("-", " ") : /*DKIController.DoDKI(inputParams.KeyName.ToString().Trim(), ref cmsPageContext)*/ inputParams.KeyName; // TODO;
                         }
                         else
                         {
@@ -112,6 +115,9 @@ namespace GXP.Dep.ModuleParsers
 
                 if (procInfo != null)
                 {
+
+                    sqlModuleInfo_.ParameterValues = GetinputParams(procInfo.InputParams, sqlModuleInfo_.InputParams, sqlModuleInfo_.MaxRecords);
+
                     string cacheKey = procInfo.AliasName;
 
                     foreach (var param in sqlModuleInfo_.ParameterValues)

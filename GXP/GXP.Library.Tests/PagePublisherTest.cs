@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using GXP.Core;
 using System.Web;
+using System.Collections.Specialized;
+using GXP.Dep;
 namespace GXP.Library.Tests
 {
     
@@ -87,12 +89,20 @@ namespace GXP.Library.Tests
             PagePublisher target = new PagePublisher();
             PagePublisherInput input_ = new PagePublisherInput();
             var mockContext = new Mock<HttpContextBase>();
+            var mockRequest = new Mock<HttpRequestBase>();
 
             input_.CurrentContext = mockContext.Object;
 
             mockContext.Setup(x => x.Response).Returns(new Mock<HttpResponseBase>().Object);
 
-            input_.ActiveTab = new Tabs() { SkinSrc = "Skins/General/seo-destinations-opt.ascx", TabID = 347 };
+            mockContext.Setup(x => x.Request).Returns(mockRequest.Object);
+
+            NameValueCollection coll = new NameValueCollection();
+            coll.Add("CityCode","NYC");
+            coll.Add("@PortalID","2");
+            mockRequest.Setup(x => x.QueryString).Returns(coll);
+
+            input_.ActiveTab = new Tabs() { SkinSrc = "Skins/General/seo-destinations-opt.ascx", TabID = 347, PortalID = 2 };
 
             List<TabModules> tabModules = new List<TabModules>();
             using (DNNEntities context = new DNNEntities())
@@ -101,11 +111,10 @@ namespace GXP.Library.Tests
             }
 
             _dbService.Setup(x => x.GetAllTabModules(input_.ActiveTab.TabID)).Returns(tabModules);
+            _dbService.Setup(x => x.LoadBaseData()).Returns(new SQLHelper().LoadBaseData());
 
-            PagePublisherResult expected = null; // TODO: Initialize to an appropriate value
             PagePublisherResult actual;
             actual = target.Publish(input_);
-            Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
     }

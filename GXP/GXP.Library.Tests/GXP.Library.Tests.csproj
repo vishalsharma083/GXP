@@ -73,6 +73,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="Config\Airlines.Config" />
+    <Content Include="Config\CMSPortal.config" />
+    <Content Include="Config\Competitors.Config" />
+    <Content Include="Config\PageTrackingSettings.config" />
+    <Content Include="Config\SlangWords.Config" />
+    <Content Include="Config\SQLDKI.config" />
+    <Content Include="Config\sqlmodule.config" />
+    <Content Include="Config\XSLTProcedures.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

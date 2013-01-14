@@ -38,16 +38,24 @@ namespace GXP.Core.Framework
             }
         }
 
-        internal static string GenerateContent(string p)
+        internal static string GenerateContent(string p, PagePublisherInput PublishingDetail)
         {
             string generatedHTML = string.Empty;
             foreach (var item in _moduleParsers)
             {
                 item.ModuleXml = p;
-                if (item.CanParse())
+                try
                 {
-                    generatedHTML  = item.GenerateContent();
-                    break;
+                    if (item.CanParse())
+                    {
+                        item.PublisherInput = PublishingDetail;
+                        generatedHTML = item.GenerateContent();
+                        break;
+                    }
+                }
+                catch (NotImplementedException)
+                {
+
                 }
             }
             return generatedHTML;

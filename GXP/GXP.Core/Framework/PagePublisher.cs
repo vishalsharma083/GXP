@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using GXP.Core.DNNEntities;
 using System.Configuration;
 using System.Net;
+using Fareportal.GlobalCMS.DataStore;
 
 namespace GXP.Core.Framework
 {
@@ -43,7 +44,9 @@ namespace GXP.Core.Framework
 
         private void DoDKIParsing(PagePublisherResult result)
         {
-            return; //TODO:
+            Store store = new Store();
+            store.Data = DependencyManager.DBService.LoadBaseData();
+            result.ResponseText = store.EvaluateAndParseExpressions(result.ResponseText);
         }
 
         private void DoHttpCacheSettings(PagePublisherInput input_)
