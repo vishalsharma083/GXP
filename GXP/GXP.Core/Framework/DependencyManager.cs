@@ -9,7 +9,7 @@ namespace GXP.Core
     public class DependencyManager
     {
         public static ICachingService CachingService { get; set; }
-        public static ILoggingService LogginService { get; set; }
+        public static ILoggingService LoggingService { get; set; }
         public static IDBService DBService { get; set; }
     }
 }

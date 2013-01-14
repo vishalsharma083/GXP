@@ -200,7 +200,7 @@ namespace GXP.Core.Framework
         private static bool IsValidKeyToReplace(string value_, int portalId_)
         {
             //Get all invalid tokens
-            string[] invalidTokens = GXP.Default.IsValidHTMLElement.Split(new char[] { ',' });
+            string[] invalidTokens = GXPSetting.Default.IsValidHTMLElement.Split(new char[] { ',' });
             bool isValidHTML = true;
 
             //Check for each invelid token and if found return true othrewise false

@@ -77,16 +77,17 @@
     <Compile Include="GCMSEntities\CMSBaseEntity.cs" />
     <Compile Include="GCMSEntities\ExcelPublisherInfo.cs" />
     <Compile Include="GCMSEntities\CMSFileInfo.cs" />
+    <Compile Include="GCMSEntities\ModuleContentLoadException.cs" />
     <Compile Include="GCMSEntities\NumberToWord.cs" />
     <Compile Include="GCMSEntities\SQLModuleInfo.cs" />
     <Compile Include="GCMSEntities\CMSTextInfo.cs" />
     <Compile Include="GCMSEntities\WeatherInfo.cs" />
     <Compile Include="GCMSEntities\RSSInfo.cs" />
     <Compile Include="GCMSEntities\UserReviewListingInfo.cs" />
-    <Compile Include="GXP.Designer.cs">
+    <Compile Include="GXPSetting.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>GXP.settings</DependentUpon>
+      <DependentUpon>GXPSetting.settings</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\ICachingService.cs" />
     <Compile Include="Interfaces\ICMSContentRepository.cs" />
@@ -95,7 +96,8 @@
     <Compile Include="Interfaces\IModuleParser.cs" />
     <Compile Include="Interfaces\IPageRequestValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utility\Utility.cs" />
+    <Compile Include="Utility\CMSHttpUtility.cs" />
+    <Compile Include="Utility\PagePublisherUtility.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -106,9 +108,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="GXP.settings">
+    <None Include="GXPSetting.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>GXP.Designer.cs</LastGenOutput>
+      <LastGenOutput>GXPSetting.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,9 +1,0 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GXP.Core" GeneratedClassName="GXP">
-  <Profiles />
-  <Settings>
-    <Setting Name="IsValidHTMLElement" Type="System.String" Scope="User">
-      <Value Profile="(Default)">iframe,script,src=,document.getelementbyid</Value>
-    </Setting>
-  </Settings>
-</SettingsFile>

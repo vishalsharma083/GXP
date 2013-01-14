@@ -13,11 +13,11 @@ namespace GXP.Core {
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "10.0.0.0")]
-    internal sealed partial class GXP : global::System.Configuration.ApplicationSettingsBase {
+    public sealed partial class GXPSetting : global::System.Configuration.ApplicationSettingsBase {
         
-        private static GXP defaultInstance = ((GXP)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new GXP())));
+        private static GXPSetting defaultInstance = ((GXPSetting)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new GXPSetting())));
         
-        public static GXP Default {
+        public static GXPSetting Default {
             get {
                 return defaultInstance;
             }
@@ -32,6 +32,18 @@ namespace GXP.Core {
             }
             set {
                 this["IsValidHTMLElement"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        public int RSSCacheDuration {
+            get {
+                return ((int)(this["RSSCacheDuration"]));
+            }
+            set {
+                this["RSSCacheDuration"] = value;
             }
         }
     }

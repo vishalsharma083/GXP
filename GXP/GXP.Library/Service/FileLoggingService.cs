@@ -8,5 +8,15 @@ namespace GXP.Dep
 {
     public class FileLoggingService : ILoggingService
     {
+        public void WriteLog(string message_, int portalId_, int tabId_, int moduleId_)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void WriteLog(string p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
