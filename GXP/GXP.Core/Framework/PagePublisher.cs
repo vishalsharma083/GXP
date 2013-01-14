@@ -8,6 +8,7 @@ using GXP.Core.DNNEntities;
 using System.Configuration;
 using System.Net;
 using Fareportal.GlobalCMS.DataStore;
+using System.Web;
 
 namespace GXP.Core.Framework
 {
@@ -15,8 +16,9 @@ namespace GXP.Core.Framework
     {
         private static Regex RemoveRunAtServerVisibleAndControlAttribute = new Regex("(?<runat>(runat=\"server\"))|(?<visible>(visible=\"false\"))|(?<controltag><%.*%>)",RegexOptions.Compiled);
         private const string FindPaneRegex = "<td.*id=\"{0}\"([^>]*)>";
-
         private PagePublisherInput _input = null;
+        private static Store _store = new Store();
+
         public PageRequestValidationResult IsValidRequest()
         {
             return RequestValidator.IsValidRequest(_input);
@@ -44,9 +46,12 @@ namespace GXP.Core.Framework
 
         private void DoDKIParsing(PagePublisherResult result)
         {
-            Store store = new Store();
-            store.Data = DependencyManager.DBService.LoadBaseData();
-            result.ResponseText = store.EvaluateAndParseExpressions(result.ResponseText);
+            // Parse Request DKI first.
+            result.ResponseText = DKIController.DoDKI(result.ResponseText, _input.CurrentContext, _input);
+
+            // Parse BaseData DKI...
+            _store.Data = DependencyManager.DBService.LoadBaseData();
+            result.ResponseText = _store.EvaluateAndParseExpressions(result.ResponseText);
         }
 
         private void DoHttpCacheSettings(PagePublisherInput input_)

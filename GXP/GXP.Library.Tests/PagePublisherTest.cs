@@ -94,6 +94,7 @@ namespace GXP.Library.Tests
             input_.CurrentContext = mockContext.Object;
 
             mockContext.Setup(x => x.Response).Returns(new Mock<HttpResponseBase>().Object);
+            mockContext.Setup(x => x.ApplicationInstance).Returns(new Mock<HttpApplication>().Object);
 
             mockContext.Setup(x => x.Request).Returns(mockRequest.Object);
 

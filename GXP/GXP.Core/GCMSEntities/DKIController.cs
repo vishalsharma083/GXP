@@ -26,82 +26,70 @@ namespace GXP.Core.Framework
             public string stringFunction;
         }
 
-        /******* Function to implement DKI functions on Query string and base data values
-        public static string DoDKI(string content_, ref PageContext cmsPageContext_)
+        //******* Function to implement DKI functions on Query string and base data values
+        public static string DoDKI(string content_, HttpContextBase context_, PagePublisherInput input_)
         {
             MatchCollection matchCollection = new Regex(DKI_REGEX_PATTERN).Matches(content_);
             RequestValueResolver requestValueResolver = new RequestValueResolver();
+            requestValueResolver.CurrentContext = context_;
+
             QueryStringValueResolver queryStringValueResolver = new QueryStringValueResolver();
+            queryStringValueResolver.CurrentContext = requestValueResolver.CurrentContext;
+            string value = string.Empty;
 
             foreach (Match match in matchCollection)
             {
                 string[] keyValuePair = null;
                 keyValuePair = match.Groups[0].ToString().Split('|');
-                if (keyValuePair[0].Contains("RN"))
-                {
-                    string startTag = "[#";
-                    string endTag = "#]";
-                    string ruleName_ = keyValuePair[0].Replace(startTag, string.Empty);
 
-                    keyValuePair[1] = keyValuePair[1].Replace(endTag, string.Empty).Replace("[", string.Empty).Replace("]", string.Empty);
-                    string rule = GetRule(ruleName_, cmsPageContext_.CurrentPortalSettings.PortalId);
-                    //gets the Rule for specified Rule Name
-                    MatchCollection regexMatch = new Regex(DKI_REGEX_PATTERN).Matches(rule);
-                    string[] validFields = null;
-                    int count_ = -1;
-                    foreach (Match matchKey in regexMatch)
-                    {
-                        count_ += 1;
-                        //identifying whether the value to be replaced in not single
-                        if (keyValuePair[1].Contains("-"))
-                        {
-                            validFields = keyValuePair[1].Split('-');
-                            if (rule.Contains(matchKey.ToString()))
-                            {
-                                rule = Strings.Replace(rule, matchKey.ToString(), validFields[count_], 1, -1, CompareMethod.Text);
-                                //replacing the values in the rule
-                            }
-                        }
-                        else
-                        {
-                            rule = Strings.Replace(rule, matchKey.ToString(), keyValuePair[1], 1, -1, CompareMethod.Text);
-                        }
-                    }
-                    content_ = Strings.Replace(content_, match.ToString(), rule, 1, -1, CompareMethod.Text);
-                    //replacing the rule in the content
-                }
-                else
-                {
-                    DKIExpression DKIExp = ParseDKIExpression(match.Groups[0].ToString());
+                DKIExpression DKIExp = ParseDKIExpression(match.Groups[0].ToString());
 
-                    // Check if it is a Request DKI
-                    if ((requestValueResolver.CanResolve(DKIExp.key)))
+                // Check if it is a Request DKI
+                if ((requestValueResolver.CanResolve(DKIExp.key)))
+                {
+                    value = requestValueResolver.Resolve(DKIExp.key);
+                    if (!string.IsNullOrEmpty(value))
                     {
-                        content_ = DoDKIRequest(content_, match.Groups[0].ToString(), DKIExp, cmsPageContext_.CurrentPortalSettings.PortalId);
-                        // Replace Request DKI with its value
-                        // Check if its a QueryString DKI
-                    }
-                    else if ((queryStringValueResolver.CanResolve(DKIExp.key)))
-                    {
-                        content_ = DoDKIQueryString(content_, match.Groups[0].ToString(), DKIExp, cmsPageContext_.CurrentPortalSettings.PortalId);
-                        // Replace Querystring DKI with its value
+                        if ((IsValidKeyToReplace(value, (Int32)input_.ActiveTab.PortalID)))
+                        {
+                            content_ = Strings.Replace(content_, match.Groups[0].ToString(), ApplyStringFunction(value, DKIExp.stringFunction), 1, -1, CompareMethod.Text);
+                        }
                     }
                     else if (!string.IsNullOrEmpty(DKIExp.defaultValue))
                     {
                         content_ = Strings.Replace(content_, match.Groups[0].ToString(), DKIExp.defaultValue, 1, -1, CompareMethod.Text);
-                        // If it is not a DKI then replace "DefaultValue" value here
                     }
                     else
                     {
                         content_ = Strings.Replace(content_, match.Groups[0].ToString(), string.Empty, 1, -1, CompareMethod.Text);
-                        // else replace key with empty string.
                     }
-
+                    // Replace Request DKI with its value
+                    // Check if its a QueryString DKI
                 }
+                else if ((queryStringValueResolver.CanResolve(DKIExp.key)))
+                {
+                    value = queryStringValueResolver.Resolve(DKIExp.key);
+                    if (IsValidKeyToReplace(value, (Int32)input_.ActiveTab.PortalID))
+                    {
+                        content_ = Strings.Replace(content_, match.Groups[0].ToString(), ApplyStringFunction(value, DKIExp.stringFunction), 1, -1, CompareMethod.Text);
+                        //check if it is a DKI then replace value here
+                    }
+                }
+                else if (!string.IsNullOrEmpty(DKIExp.defaultValue))
+                {
+                    content_ = Strings.Replace(content_, match.Groups[0].ToString(), DKIExp.defaultValue, 1, -1, CompareMethod.Text);
+                    // If it is not a DKI then replace "DefaultValue" value here
+                }
+                else
+                {
+                    content_ = Strings.Replace(content_, match.Groups[0].ToString(), string.Empty, 1, -1, CompareMethod.Text);
+                    // else replace key with empty string.
+                }
+
             }
             //Return content_
-            return PerformDKIBaseData(content_, cmsPageContext_.CurrentCMSSetting.BaseData.Data);
-        }*/
+            return content_;
+        }
 
         //*******Function to implemet DKI function on SQL Module Output Parameter values
         public static string DoDKI(string content_, DataRow dr_)
@@ -402,21 +390,7 @@ namespace GXP.Core.Framework
             str_ = GetFirstWord(str_);
             return Strings.StrReverse(str_);
         }
-
-        public static string PerformDKIBaseData(string content_, DataSet dataSet_)
-        {
-            Store dataStore = new Store();
-            try
-            {
-                dataStore.Data = dataSet_;
-                return dataStore.EvaluateAndParseExpressions(content_);
-            }
-            catch (InvalidOperationException ex)
-            {
-                return content_;
-            }
-        }
-
+        
         public static string DoDKIRequest(string content_, string matchedExpression_, DKIExpression dkiExp_, int portalId_)
         {
             RequestValueResolver requestValueResolver = new RequestValueResolver();
