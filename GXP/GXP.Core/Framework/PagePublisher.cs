@@ -26,7 +26,6 @@ namespace GXP.Core.Framework
             string xslt = PrepareXSLT();
             result.ResponseText = DoTransformation(xslt);
             DoDKIParsing(result);
-            input_.CurrentContext.Response.Write(result.ResponseText);
             DoHttpCacheSettings(input_);
             result.Status = PublishStatus.SUCCESS;
             return result;
@@ -57,7 +56,7 @@ namespace GXP.Core.Framework
 
         private string PrepareXSLT()
         {
-            string skin = PagePublisherUtility.GetAllFileContent(_input.ApplicationBasePath + "\\portals\\" + _input.ActiveTab.PortalID + _input.ActiveTab.SkinSrc);
+            string skin = PagePublisherUtility.GetAllFileContent(_input.ApplicationBasePath + "\\portals\\" + _input.ActiveTab.PortalID +"\\"+ _input.ActiveTab.SkinSrc.Replace("[L]", string.Empty));
 
             skin = RemoveRunAtServerVisibleAndControlAttribute.Replace(skin, string.Empty);
 

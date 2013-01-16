@@ -13,7 +13,7 @@ namespace GXP.Library.Validation
     {
         public bool IsValid(PagePublisherInput input_)
         {
-            string hostName = input_.CurrentContext.Request.UserHostName;
+            string hostName = input_.CurrentContext.Request.Url.Host;
             PortalAlias portalAlias = DependencyManager.DBService.GetAllPortalAlias().Where(x => x.HTTPAlias == hostName).FirstOrDefault<PortalAlias>();
             if (portalAlias != null)
             {

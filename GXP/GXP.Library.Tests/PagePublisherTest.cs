@@ -10,6 +10,7 @@ using GXP.Core;
 using System.Web;
 using System.Collections.Specialized;
 using GXP.Dep;
+using System.Configuration;
 namespace GXP.Library.Tests
 {
     
@@ -95,8 +96,8 @@ namespace GXP.Library.Tests
 
             mockContext.Setup(x => x.Response).Returns(new Mock<HttpResponseBase>().Object);
             mockContext.Setup(x => x.ApplicationInstance).Returns(new Mock<HttpApplication>().Object);
-
             mockContext.Setup(x => x.Request).Returns(mockRequest.Object);
+            mockRequest.Setup(x => x.PhysicalApplicationPath).Returns(ConfigurationManager.AppSettings["PortalFolderPath"]);
 
             NameValueCollection coll = new NameValueCollection();
             coll.Add("CityCode","NYC");

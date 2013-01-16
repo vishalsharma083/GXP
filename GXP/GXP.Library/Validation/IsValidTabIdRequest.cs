@@ -18,12 +18,11 @@ namespace GXP.Library.Validation
             if (tabid > -1)
             {
                 input_.ActiveTab = DependencyManager.DBService.GetAllTabsByPortalId(input_.CurrentPortalAlias.PortalID).Where(x => x.TabID == tabid).FirstOrDefault<Tabs>();
-                if (input_.ActiveTab != null)
+                if (input_.ActiveTab == null)
                 {
                     input_.CanProcessRequest = false;
                 }
             }
-
             return input_.CanProcessRequest;
         }
 

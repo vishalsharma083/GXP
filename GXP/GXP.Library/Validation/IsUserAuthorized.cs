@@ -11,14 +11,14 @@ namespace GXP.Library.Validation
     {
         public bool IsValid(PagePublisherInput input_)
         {
-            return true;
+            return true; // TODO:
         }
 
         public decimal SortOrder
         {
             get
             {
-                return 0.9M;
+                return 4;
             }
         }
     }
