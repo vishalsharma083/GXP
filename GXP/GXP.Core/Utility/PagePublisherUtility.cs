@@ -8,13 +8,41 @@ using System.IO;
 using System.Xml.Serialization;
 using System.Xml;
 
+
 namespace GXP.Core.Utilities
 {
     public class PagePublisherUtility
     {
         public static PagePublisherInput ConstructPagePublisherInput(HttpContextBase context_)
         {
-            throw new NotImplementedException();
+            PagePublisherInput input = new PagePublisherInput();
+            try
+            {
+                input.CurrentContext = context_;
+                int tabid = -1;
+                int.TryParse(context_.Request.QueryString["tabid"], out tabid);
+                if (tabid > -1)
+                {
+                    string hostName = context_.Request.UserHostName;
+                    DNNEntities.PortalAlias portalAlias = DependencyManager.DBService.GetAllPortalAlias().Where(x => x.HTTPAlias == hostName).FirstOrDefault<DNNEntities.PortalAlias>();
+                    if (portalAlias == null)
+                    {
+                        return input;
+                    }
+                    input.ActiveTab = DependencyManager.DBService.GetAllTabsByPortalId(portalAlias.PortalID).Where(x => x.TabID == tabid).FirstOrDefault<DNNEntities.Tabs>();
+                    if (input.ActiveTab == null)
+                    {
+                        return input;
+                    }
+                }
+                input.CanProcessRequest = true;
+            }
+            catch (Exception ex)
+            {
+                input.ErrorMessage = ex.ToString();
+            }
+            
+            return input;
         }
 
         public static string GetViewModeModuleContent(string filePath_)

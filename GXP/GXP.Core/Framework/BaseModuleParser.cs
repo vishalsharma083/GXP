@@ -20,11 +20,8 @@ namespace GXP.Core.Framework
                 _moduleXml = value;
             }
         }
-
         public abstract bool CanParse();
-
         public abstract string GenerateContent();
-
         private PagePublisherInput _publisherInput;
         public PagePublisherInput PublisherInput
         {
@@ -37,6 +34,5 @@ namespace GXP.Core.Framework
                 _publisherInput = value;
             }
         }
-
     }
 }

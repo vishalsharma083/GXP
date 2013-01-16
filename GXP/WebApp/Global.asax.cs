@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using GXP.Core;
 
 namespace WebApp
 {
@@ -12,8 +13,9 @@ namespace WebApp
 
         void Application_Start(object sender, EventArgs e)
         {
-            // Code that runs on application startup
-
+            DependencyManager.CachingService = new GXP.Dep.ASPNetCachingService();
+            DependencyManager.DBService = new GXP.Dep.SQLHelper();
+            DependencyManager.LoggingService = new GXP.Dep.FileLoggingService();
         }
 
         void Application_End(object sender, EventArgs e)

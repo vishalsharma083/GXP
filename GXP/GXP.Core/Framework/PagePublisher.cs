@@ -69,7 +69,7 @@ namespace GXP.Core.Framework
 
         private string PrepareXSLT()
         {
-            string skin = PagePublisherUtility.GetAllFileContent(ConfigurationManager.AppSettings["PortalFolderPath"] + "\\" + _input.ActiveTab.SkinSrc);
+            string skin = PagePublisherUtility.GetAllFileContent(_input.ApplicationBasePath + "\\portals\\" + _input.ActiveTab.PortalID + _input.ActiveTab.SkinSrc);
 
             skin = RemoveRunAtServerVisibleAndControlAttribute.Replace(skin, string.Empty);
 

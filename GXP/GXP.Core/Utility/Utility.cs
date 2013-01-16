@@ -19,7 +19,6 @@ namespace GXP.Core.Utilities
             int index = 0;
             if (File.Exists(excelFile_))
             {
-                //Dim excelFilePath As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & excelFile_ & ";Extended Properties=Excel 8.0;"
                 string excelFilePath = WebConfigurationManager.AppSettings["XLSXConnectionString"].Replace("[#FilePath#]", excelFile_);
                 using (OleDbConnection oledbConn = new OleDbConnection(excelFilePath))
                 {

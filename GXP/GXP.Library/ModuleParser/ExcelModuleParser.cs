@@ -51,7 +51,7 @@ namespace GXP.Dep.ModuleParsers
             try
             {
                 // TODO : Implement Caching.
-                string existingFile = GXP.Core.GXPSetting.Default.BaseDataStorePath + excelPublisherInfo_.FileName;
+                string existingFile = this.PublisherInput.ApplicationBasePath + excelPublisherInfo_.FileName;
                 if (!string.IsNullOrEmpty(excelPublisherInfo_.FileName) && File.Exists(existingFile))
                 {
                     result = Utility.ReadExcelFile(existingFile, "Data", excelPublisherInfo_.MaxRecords, excelPublisherInfo_.PortalId);

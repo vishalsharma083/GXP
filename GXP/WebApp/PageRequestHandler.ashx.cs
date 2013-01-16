@@ -12,11 +12,21 @@ namespace WebApp
     /// </summary>
     public class PageRequestHandler : IHttpHandler
     {
-
         public void ProcessRequest(HttpContext context)
         {
+
             PagePublisher publisher = new PagePublisher();
-            publisher.Publish(PagePublisherUtility.ConstructPagePublisherInput(new HttpContextWrapper(context)));
+            PagePublisherInput input = PagePublisherUtility.ConstructPagePublisherInput(new HttpContextWrapper(context));
+            if (input.CanProcessRequest == false)
+            {
+                context.Response.Write("can not process this request because of below \r\n\r\n");
+                context.Response.Write(input.ErrorMessage);
+            }
+            else
+            {
+                PagePublisherResult result = publisher.Publish(input);
+                context.Response.Write(result.ResponseText);
+            }
         }
 
         public bool IsReusable
