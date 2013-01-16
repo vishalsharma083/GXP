@@ -31,6 +31,11 @@ namespace GXP.Core.Framework
                         _validators.Add(Activator.CreateInstance("GXP.Library", t.FullName).Unwrap() as IPageRequestValidation);
                     }
                 }
+                _validators.Sort(delegate(IPageRequestValidation x, IPageRequestValidation y)
+                {
+                    return x.SortOrder.CompareTo(y.SortOrder);
+                });
+
                 DependencyManager.CachingService.Insert(cacheKey, _validators, DateTime.Now.AddMinutes(60));
             }
         }

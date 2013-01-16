@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using GXP.Core.Interfaces;
 using GXP.Core.Framework;
+using GXP.Core.DNNEntities;
+using GXP.Core;
 
 namespace GXP.Library.Validation
 {
@@ -11,18 +13,21 @@ namespace GXP.Library.Validation
     {
         public bool IsValid(PagePublisherInput input_)
         {
-            throw new NotImplementedException();
+            string hostName = input_.CurrentContext.Request.UserHostName;
+            PortalAlias portalAlias = DependencyManager.DBService.GetAllPortalAlias().Where(x => x.HTTPAlias == hostName).FirstOrDefault<PortalAlias>();
+            if (portalAlias != null)
+            {
+                input_.CanProcessRequest = true;
+                input_.CurrentPortalAlias = portalAlias;
+            }
+            return input_.CanProcessRequest;
         }
 
         public decimal SortOrder
         {
             get
             {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
+                return 2;
             }
         }
     }

@@ -19,5 +19,6 @@ namespace GXP.Core.Framework
         public Tabs ActiveTab { get; set; }
         public bool CanProcessRequest { get; set; }
         public string  ErrorMessage { get; set; }
+        public PortalAlias CurrentPortalAlias { get; set; }
     }
 }

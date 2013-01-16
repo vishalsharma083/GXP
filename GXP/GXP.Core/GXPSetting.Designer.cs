@@ -70,5 +70,17 @@ namespace GXP.Core {
                 this["MaxAttemptToReadWriteFiles"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(".ashx,.jpg,.css.,.js")]
+        public string ByPassRequestProcessingForExtensions {
+            get {
+                return ((string)(this["ByPassRequestProcessingForExtensions"]));
+            }
+            set {
+                this["ByPassRequestProcessingForExtensions"] = value;
+            }
+        }
     }
 }

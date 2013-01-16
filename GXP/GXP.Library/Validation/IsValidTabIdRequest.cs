@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using GXP.Core.Interfaces;
 using GXP.Core.Framework;
+using GXP.Core;
+using GXP.Core.DNNEntities;
 
 namespace GXP.Library.Validation
 {
@@ -11,18 +13,25 @@ namespace GXP.Library.Validation
     {
         public bool IsValid(PagePublisherInput input_)
         {
-            throw new NotImplementedException();
+            int tabid = -1;
+            int.TryParse(input_.CurrentContext.Request.QueryString["tabid"], out tabid);
+            if (tabid > -1)
+            {
+                input_.ActiveTab = DependencyManager.DBService.GetAllTabsByPortalId(input_.CurrentPortalAlias.PortalID).Where(x => x.TabID == tabid).FirstOrDefault<Tabs>();
+                if (input_.ActiveTab != null)
+                {
+                    input_.CanProcessRequest = false;
+                }
+            }
+
+            return input_.CanProcessRequest;
         }
 
         public decimal SortOrder
         {
             get
             {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
+                return 3;
             }
         }
     }

@@ -16,7 +16,8 @@ namespace WebApp
         {
 
             PagePublisher publisher = new PagePublisher();
-            PagePublisherInput input =  PagePublisherUtility.ConstructPagePublisherInput(new HttpContextWrapper(context));
+            PagePublisherInput input = new PagePublisherInput();
+            input.CurrentContext = new HttpContextWrapper(context);
             RequestValidator.Validate(input);
             if (input.CanProcessRequest == false)
             {

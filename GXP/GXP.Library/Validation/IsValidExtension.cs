@@ -12,18 +12,14 @@ namespace GXP.Dep.Validations
 
         public bool IsValid(PagePublisherInput input_)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public decimal SortOrder
         {
             get
             {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
+                return 1;
             }
         }
     }

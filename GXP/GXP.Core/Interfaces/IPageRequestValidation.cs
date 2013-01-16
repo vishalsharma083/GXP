@@ -9,6 +9,6 @@ namespace GXP.Core.Interfaces
     public interface IPageRequestValidation
     {
         bool IsValid(PagePublisherInput input_);
-        decimal SortOrder { get; set; }
+        decimal SortOrder { get; }
     }
 }
