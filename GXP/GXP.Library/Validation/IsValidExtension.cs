@@ -7,7 +7,24 @@ using GXP.Core.Framework;
 
 namespace GXP.Dep.Validations
 {
-    public class IsValidExtension : BaseRequestValidator
+    public class IsValidExtension : IPageRequestValidation
     {
+
+        public bool IsValid(PagePublisherInput input_)
+        {
+            throw new NotImplementedException();
+        }
+
+        public decimal SortOrder
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }

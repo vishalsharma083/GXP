@@ -7,8 +7,23 @@ using GXP.Core.Framework;
 
 namespace GXP.Library.Validation
 {
-    public class IsUserAuthorized : BaseRequestValidator
+    public class IsUserAuthorized : IPageRequestValidation
     {
-        
+        public bool IsValid(PagePublisherInput input_)
+        {
+            throw new NotImplementedException();
+        }
+
+        public decimal SortOrder
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }

@@ -64,7 +64,6 @@
       <DependentUpon>DNNEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Framework\BaseModuleParser.cs" />
-    <Compile Include="Framework\BaseRequestValidator.cs" />
     <Compile Include="Framework\CDATA.cs" />
     <Compile Include="Framework\CMSXsltUtility.cs" />
     <Compile Include="Framework\DependencyManager.cs" />
