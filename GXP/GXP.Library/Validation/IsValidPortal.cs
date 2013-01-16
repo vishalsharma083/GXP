@@ -5,9 +5,9 @@ using System.Text;
 using GXP.Core.Interfaces;
 using GXP.Core.Framework;
 
-namespace GXP.Dep.Validations
+namespace GXP.Library.Validation
 {
-    public class IsValidExtension : BaseRequestValidator
+    public class IsValidPortal : BaseRequestValidator
     {
     }
 }

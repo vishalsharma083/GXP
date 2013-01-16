@@ -60,7 +60,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\SQLHelper.cs" />
     <Compile Include="UI\CMSRepeater.cs" />
+    <Compile Include="Validation\IsUserAuthorized.cs" />
     <Compile Include="Validation\IsValidExtension.cs" />
+    <Compile Include="Validation\IsValidPortal.cs" />
+    <Compile Include="Validation\IsValidTabIdRequest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GXP.Core\GXP.Core.csproj">

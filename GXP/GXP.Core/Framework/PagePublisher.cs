@@ -19,28 +19,16 @@ namespace GXP.Core.Framework
         private PagePublisherInput _input = null;
         private static Store _store = new Store();
 
-        public PageRequestValidationResult IsValidRequest()
-        {
-            return RequestValidator.IsValidRequest(_input);
-        }
-
         public PagePublisherResult Publish(PagePublisherInput input_)
         {
             _input = input_;
             PagePublisherResult result = new PagePublisherResult();
-            if (IsValidRequest().IsValid)
-            {
-                string xslt = PrepareXSLT();
-                result.ResponseText = DoTransformation(xslt);
-                DoDKIParsing(result);
-                input_.CurrentContext.Response.Write(result.ResponseText);
-                DoHttpCacheSettings(input_);
-                result.Status = PublishStatus.SUCCESS;
-            }
-            else
-            {
-                throw new NotImplementedException("Publish.if.else");
-            }
+            string xslt = PrepareXSLT();
+            result.ResponseText = DoTransformation(xslt);
+            DoDKIParsing(result);
+            input_.CurrentContext.Response.Write(result.ResponseText);
+            DoHttpCacheSettings(input_);
+            result.Status = PublishStatus.SUCCESS;
             return result;
         }
 

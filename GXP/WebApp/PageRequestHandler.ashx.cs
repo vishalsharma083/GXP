@@ -16,7 +16,8 @@ namespace WebApp
         {
 
             PagePublisher publisher = new PagePublisher();
-            PagePublisherInput input = PagePublisherUtility.ConstructPagePublisherInput(new HttpContextWrapper(context));
+            PagePublisherInput input =  PagePublisherUtility.ConstructPagePublisherInput(new HttpContextWrapper(context));
+            RequestValidator.Validate(input);
             if (input.CanProcessRequest == false)
             {
                 context.Response.Write("can not process this request because of below \r\n\r\n");

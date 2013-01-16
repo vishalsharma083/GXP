@@ -10,11 +10,6 @@ namespace GXP.Core.Framework
     public class RequestValidator
     {
         private static List<IPageRequestValidation> _validators = new List<IPageRequestValidation>();
-        public static PageRequestValidationResult IsValidRequest(PagePublisherInput input_)
-        {
-            return new PageRequestValidationResult() { IsValid = true };
-        }
-
         static RequestValidator()
         {
             string cacheKey = "AllRequestValidators";
@@ -26,18 +21,29 @@ namespace GXP.Core.Framework
             else
             {
                 _validators = new List<IPageRequestValidation>();
-                //var type = typeof(IPageRequestValidation);
-                //_validators = new List<IPageRequestValidation>();
-                //System.Reflection.Assembly assem = Assembly.Load("GXP.Library"); // TODO : Hard coding to be removed.
-                //foreach (Type t in assem.GetTypes())
-                //{
-                //    if (type.IsAssignableFrom(t) && type.Name != t.Name)
-                //    {
-                //        _validators.Add(Activator.CreateInstance("GXP.Library", t.FullName).Unwrap() as IPageRequestValidation);
-                //    }
-                //}
-                //_validators.Sort();
-                //DependencyManager.CachingService.Insert(cacheKey, _validators, DateTime.Now.AddMinutes(60));
+                var type = typeof(IPageRequestValidation);
+                _validators = new List<IPageRequestValidation>();
+                System.Reflection.Assembly assem = Assembly.Load("GXP.Library"); // TODO : Hard coding to be removed.
+                foreach (Type t in assem.GetTypes())
+                {
+                    if (type.IsAssignableFrom(t) && type.Name != t.Name)
+                    {
+                        _validators.Add(Activator.CreateInstance("GXP.Library", t.FullName).Unwrap() as IPageRequestValidation);
+                    }
+                }
+                DependencyManager.CachingService.Insert(cacheKey, _validators, DateTime.Now.AddMinutes(60));
+            }
+        }
+
+        public static void Validate(PagePublisherInput input_)
+        {
+             foreach (IPageRequestValidation validator in _validators)
+            {
+                if (validator.IsValid(input_)==false)
+                {
+                    input_.CanProcessRequest = false;
+                    break;
+                }
             }
         }
     }
