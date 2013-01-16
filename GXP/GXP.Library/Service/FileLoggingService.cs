@@ -18,5 +18,11 @@ namespace GXP.Dep
         {
             throw new NotImplementedException();
         }
+
+
+        public void WriteLog(string p, string p_2, System.Web.HttpContext httpContext, string p_3, string p_4)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using GXP.Core.Framework;
-using GXP.Core.Utility;
+using GXP.Core.Utilities;
 
 namespace WebApp
 {

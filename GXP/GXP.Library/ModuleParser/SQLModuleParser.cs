@@ -5,7 +5,6 @@ using System.Text;
 using GXP.Core.Interfaces;
 using System.Xml.Linq;
 using GXP.Core.GCMSEntities;
-using GXP.Core.Utility;
 using System.IO;
 using GXP.Core.Framework;
 using System.Web;
@@ -16,6 +15,7 @@ using GXP.Core;
 using System.Web.UI.WebControls;
 using GXP.Library.UI;
 using System.Reflection;
+using GXP.Core.Utilities;
 namespace GXP.Dep.ModuleParsers
 {
     public class SQLModuleParser : BaseModuleParser

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ebac48a4-f9d3-4909-8ba1-d3d1179ffbed" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://dms.fareportal.com/dmsservice/dealservice.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DealService.xsd" MetadataType="Schema" ID="7de9e081-a2b6-4f79-bd46-ef5345d34746" SourceId="1" SourceUrl="http://dms.fareportal.com/DMSService/DealService.svc?xsd=xsd1" />
+    <MetadataFile FileName="DealService1.xsd" MetadataType="Schema" ID="71c1f2c3-1bc3-4a8e-9551-22595cabd033" SourceId="1" SourceUrl="http://dms.fareportal.com/DMSService/DealService.svc?xsd=xsd0" />
+    <MetadataFile FileName="DealService2.xsd" MetadataType="Schema" ID="934359ea-aaf0-4baf-af25-555567c077bb" SourceId="1" SourceUrl="http://dms.fareportal.com/DMSService/DealService.svc?xsd=xsd3" />
+    <MetadataFile FileName="DealService3.xsd" MetadataType="Schema" ID="25b521e3-936a-4132-909e-59495988b839" SourceId="1" SourceUrl="http://dms.fareportal.com/DMSService/DealService.svc?xsd=xsd2" />
+    <MetadataFile FileName="DealService.wsdl" MetadataType="Wsdl" ID="b0e32a61-cb29-443e-ad3e-28b3afa26692" SourceId="1" SourceUrl="http://dms.fareportal.com/DMSService/DealService.svc?wsdl" />
+    <MetadataFile FileName="DealService.disco" MetadataType="Disco" ID="246ebe1a-b58c-43f1-ac1d-6666b09e5372" SourceId="1" SourceUrl="http://dms.fareportal.com/DMSService/DealService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

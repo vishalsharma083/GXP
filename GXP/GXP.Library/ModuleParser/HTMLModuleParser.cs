@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using GXP.Core.Interfaces;
-using GXP.Core.Utility;
 using GXP.Core.GCMSEntities;
 using GXP.Core.Framework;
+using GXP.Core.Utilities;
 
 namespace GXP.Dep.ModuleParsers
 {

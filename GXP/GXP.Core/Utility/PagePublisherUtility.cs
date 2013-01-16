@@ -8,7 +8,7 @@ using System.IO;
 using System.Xml.Serialization;
 using System.Xml;
 
-namespace GXP.Core.Utility
+namespace GXP.Core.Utilities
 {
     public class PagePublisherUtility
     {

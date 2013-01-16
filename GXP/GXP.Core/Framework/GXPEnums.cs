@@ -24,4 +24,21 @@ namespace GXP.Core.Framework
         PublishOnly = 2
     }
 
+    public enum ModuleContentErrorType
+    {
+        NONE = 0,
+        MODULE_CONTENT_NOT_FOUND = 1,
+        MODULE_CONTENT_NOT_SET_TO_LOAD_ASYNCHRONOUSLY = 2
+    }
+    public enum XSLTExceptionType
+    {
+        DBException,
+        DMS_Processing_Exception,
+        DMS_TimeOut_Exception,
+        DMS_Service_Unavailable_Exception,
+        ExcelException,
+        RSSException,
+        EclipseException
+    }
+
 }

@@ -46,5 +46,29 @@ namespace GXP.Core {
                 this["RSSCacheDuration"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("c:\\TestFolder\\")]
+        public string BaseDataStorePath {
+            get {
+                return ((string)(this["BaseDataStorePath"]));
+            }
+            set {
+                this["BaseDataStorePath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int MaxAttemptToReadWriteFiles {
+            get {
+                return ((int)(this["MaxAttemptToReadWriteFiles"]));
+            }
+            set {
+                this["MaxAttemptToReadWriteFiles"] = value;
+            }
+        }
     }
 }

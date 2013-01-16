@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DealService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://dms.fareportal.com/DMSService/DealService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://dms.fareportal.com/DMSService/DealService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://dms.fareportal.com/DMSService/DealService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DMS.Business" />
+      <xsd:import schemaLocation="http://dms.fareportal.com/DMSService/DealService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IDealService_GetDealResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealResult" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetDealResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetDealResultWithParam_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealResultWithParam" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetDealResultWithParam_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealResultWithParamResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetActiveDeals_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveDeals" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetActiveDeals_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveDealsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetExpiredDeals_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetExpiredDeals" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetExpiredDeals_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetExpiredDealsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetAllDeals_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDeals" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetAllDeals_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDealsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_RemoveDealCache_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveDealCache" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_RemoveDealCache_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveDealCacheResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_CreateDealCache_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateDealCache" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_CreateDealCache_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateDealCacheResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_DeleteDeal_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDeal" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_DeleteDeal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDealResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetDealResultHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealResultHistory" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetDealResultHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealResultHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetAllRecFromCacheObject_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRecFromCacheObject" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetAllRecFromCacheObject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRecFromCacheObjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_RemoveFromCacheObject_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveFromCacheObject" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_RemoveFromCacheObject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveFromCacheObjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetMemCachedServerStats_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMemCachedServerStats" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetMemCachedServerStats_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMemCachedServerStatsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IDealService">
+    <wsdl:operation name="GetDealResult">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/GetDealResult" message="tns:IDealService_GetDealResult_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/GetDealResultResponse" message="tns:IDealService_GetDealResult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDealResultWithParam">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/GetDealResultWithParam" message="tns:IDealService_GetDealResultWithParam_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/GetDealResultWithParamResponse" message="tns:IDealService_GetDealResultWithParam_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveDeals">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/GetActiveDeals" message="tns:IDealService_GetActiveDeals_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/GetActiveDealsResponse" message="tns:IDealService_GetActiveDeals_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExpiredDeals">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/GetExpiredDeals" message="tns:IDealService_GetExpiredDeals_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/GetExpiredDealsResponse" message="tns:IDealService_GetExpiredDeals_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDeals">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/GetAllDeals" message="tns:IDealService_GetAllDeals_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/GetAllDealsResponse" message="tns:IDealService_GetAllDeals_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveDealCache">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/RemoveDealCache" message="tns:IDealService_RemoveDealCache_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/RemoveDealCacheResponse" message="tns:IDealService_RemoveDealCache_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateDealCache">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/CreateDealCache" message="tns:IDealService_CreateDealCache_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/CreateDealCacheResponse" message="tns:IDealService_CreateDealCache_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDeal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/DeleteDeal" message="tns:IDealService_DeleteDeal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/DeleteDealResponse" message="tns:IDealService_DeleteDeal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDealResultHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/GetDealResultHistory" message="tns:IDealService_GetDealResultHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/GetDealResultHistoryResponse" message="tns:IDealService_GetDealResultHistory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRecFromCacheObject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/GetAllRecFromCacheObject" message="tns:IDealService_GetAllRecFromCacheObject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/GetAllRecFromCacheObjectResponse" message="tns:IDealService_GetAllRecFromCacheObject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveFromCacheObject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/RemoveFromCacheObject" message="tns:IDealService_RemoveFromCacheObject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/RemoveFromCacheObjectResponse" message="tns:IDealService_RemoveFromCacheObject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMemCachedServerStats">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/GetMemCachedServerStats" message="tns:IDealService_GetMemCachedServerStats_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/GetMemCachedServerStatsResponse" message="tns:IDealService_GetMemCachedServerStats_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IDealService" type="tns:IDealService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDealResult">
+      <soap:operation soapAction="http://tempuri.org/IDealService/GetDealResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDealResultWithParam">
+      <soap:operation soapAction="http://tempuri.org/IDealService/GetDealResultWithParam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveDeals">
+      <soap:operation soapAction="http://tempuri.org/IDealService/GetActiveDeals" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExpiredDeals">
+      <soap:operation soapAction="http://tempuri.org/IDealService/GetExpiredDeals" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDeals">
+      <soap:operation soapAction="http://tempuri.org/IDealService/GetAllDeals" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveDealCache">
+      <soap:operation soapAction="http://tempuri.org/IDealService/RemoveDealCache" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateDealCache">
+      <soap:operation soapAction="http://tempuri.org/IDealService/CreateDealCache" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDeal">
+      <soap:operation soapAction="http://tempuri.org/IDealService/DeleteDeal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDealResultHistory">
+      <soap:operation soapAction="http://tempuri.org/IDealService/GetDealResultHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRecFromCacheObject">
+      <soap:operation soapAction="http://tempuri.org/IDealService/GetAllRecFromCacheObject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveFromCacheObject">
+      <soap:operation soapAction="http://tempuri.org/IDealService/RemoveFromCacheObject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMemCachedServerStats">
+      <soap:operation soapAction="http://tempuri.org/IDealService/GetMemCachedServerStats" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DealService">
+    <wsdl:port name="BasicHttpBinding_IDealService" binding="tns:BasicHttpBinding_IDealService">
+      <soap:address location="http://dms.fareportal.com/DMSService/DealService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

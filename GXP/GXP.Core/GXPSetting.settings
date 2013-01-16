@@ -8,5 +8,11 @@
     <Setting Name="RSSCacheDuration" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">60</Value>
     </Setting>
+    <Setting Name="BaseDataStorePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">c:\TestFolder\</Value>
+    </Setting>
+    <Setting Name="MaxAttemptToReadWriteFiles" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

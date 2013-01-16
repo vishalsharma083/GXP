@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using GXP.Core.Utility;
 using System.Text.RegularExpressions;
 using GXP.Core.DNNEntities;
 using System.Configuration;
 using System.Net;
 using Fareportal.GlobalCMS.DataStore;
 using System.Web;
+using GXP.Core.Utilities;
 
 namespace GXP.Core.Framework
 {

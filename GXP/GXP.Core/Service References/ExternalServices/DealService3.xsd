@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/DMS.Business" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DMS.Business" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://dms.fareportal.com/DMSService/DealService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://dms.fareportal.com/DMSService/DealService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ArrayOfDeal">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Deal" nillable="true" type="tns:Deal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDeal" nillable="true" type="tns:ArrayOfDeal" />
+  <xs:complexType name="Deal">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Createdate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DealResult" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DealResultLimit" type="xs:int" />
+      <xs:element minOccurs="0" name="DealType" type="tns:DealTypeType" />
+      <xs:element minOccurs="0" name="ExpiryDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Group" nillable="true" type="tns:DealGroup" />
+      <xs:element minOccurs="0" name="ID" type="ser:guid" />
+      <xs:element minOccurs="0" name="IsStatic" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LiveSearchAllowed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Modifydate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QueryParams" nillable="true" type="tns:ArrayOfDealQueryParam" />
+      <xs:element minOccurs="0" name="RefreshRate" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ResultColumns" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SortColumns" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element minOccurs="0" name="SortDescending" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StaticLiveSearchAllowed" type="xs:boolean" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="TargetValueList" nillable="true" type="q3:ArrayOfstring" />
+      <xs:element minOccurs="0" name="TargetValues" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Deal" nillable="true" type="tns:Deal" />
+  <xs:simpleType name="DealTypeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Air">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Hotel">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Car">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Vacation">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DealTypeType" nillable="true" type="tns:DealTypeType" />
+  <xs:complexType name="DealGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateCreated" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateModified" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DealDefinitions" nillable="true" type="tns:ArrayOfDealDefinition" />
+      <xs:element minOccurs="0" name="GroupName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:unsignedByte" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DealGroup" nillable="true" type="tns:DealGroup" />
+  <xs:complexType name="ArrayOfDealDefinition">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DealDefinition" nillable="true" type="tns:DealDefinition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDealDefinition" nillable="true" type="tns:ArrayOfDealDefinition" />
+  <xs:complexType name="DealDefinition">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AirDealDetails" nillable="true" type="tns:ArrayOfAirDealDetail" />
+      <xs:element minOccurs="0" name="CreateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DealGroup" nillable="true" type="tns:DealGroup" />
+      <xs:element minOccurs="0" name="DealID" type="ser:guid" />
+      <xs:element minOccurs="0" name="DealName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DealType" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Details" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:any minOccurs="0" processContents="lax" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="ExpiryDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GroupID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsStatic" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModifiedDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RefreshRate" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DealDefinition" nillable="true" type="tns:DealDefinition" />
+  <xs:complexType name="ArrayOfAirDealDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AirDealDetail" nillable="true" type="tns:AirDealDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAirDealDetail" nillable="true" type="tns:ArrayOfAirDealDetail" />
+  <xs:complexType name="AirDealDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CustomizerXml" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:any minOccurs="0" processContents="lax" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="DealDefinition" nillable="true" type="tns:DealDefinition" />
+      <xs:element minOccurs="0" name="DealID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="FilterXml" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:any minOccurs="0" processContents="lax" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="QueryParam" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QueryParamXML" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:any minOccurs="0" processContents="lax" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AirDealDetail" nillable="true" type="tns:AirDealDetail" />
+  <xs:complexType name="ArrayOfDealQueryParam">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DealQueryParam" nillable="true" type="tns:DealQueryParam" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDealQueryParam" nillable="true" type="tns:ArrayOfDealQueryParam" />
+  <xs:complexType name="DealQueryParam">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Conjunction" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FieldName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Operator" type="tns:OperatorType" />
+      <xs:element minOccurs="0" name="TargetValue1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TargetValue2" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DealQueryParam" nillable="true" type="tns:DealQueryParam" />
+  <xs:simpleType name="OperatorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Equal" />
+      <xs:enumeration value="NotEqual" />
+      <xs:enumeration value="GreaterThan" />
+      <xs:enumeration value="LessThan" />
+      <xs:enumeration value="GreaterThanEqualTo" />
+      <xs:enumeration value="LessThanEqualTo" />
+      <xs:enumeration value="Contains" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="OperatorType" nillable="true" type="tns:OperatorType" />
+</xs:schema>
